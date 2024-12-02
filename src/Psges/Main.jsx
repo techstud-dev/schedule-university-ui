@@ -1,7 +1,9 @@
+import SheduleCard from "../Components/ShedulePageComponents/SheduleCard";
+
 function Main() {
     return (
       <div className="Main">
-        Main
+        <SheduleCard />
       </div>
     );
   }

@@ -1,16 +1,15 @@
-import './App.css';
-import Footer from './Psges/Footer';
-import Login from './Psges/Login';
-import Main from './Psges/Main';
-import Navbar from './Psges/Navbar';
+import "./App.css";
+import Footer from "./Psges/Footer";
+import Main from "./Psges/Main";
+import Navbar from "./Psges/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Main />
-      <Login />
-      <Footer />
+      <div className="header"><Navbar /></div>
+      <div className="content"><Main /></div>
+      <div className="footer"><Footer /></div>           
+      {/* <Login /> */}
     </div>
   );
 }
