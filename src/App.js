@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./Psges/Footer";
 import Main from "./Psges/Main";
@@ -7,7 +8,9 @@ function App() {
   return (
     <div className="App">
       <div className="header"><Navbar /></div>
-      <div className="content"><Main /></div>
+      <Routes>
+        <Route path='/' element={<Main />}></Route>
+      </Routes>
       <div className="footer"><Footer /></div>           
       {/* <Login /> */}
     </div>
