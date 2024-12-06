@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./Psges/Footer";
-import Main from "./Psges/Main";
-import Navbar from "./Psges/Navbar";
+import Footer from "./Pages/Footer";
+import Main from "./Pages/Main";
+import Navbar from "./Pages/Navbar";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
@@ -10,15 +11,11 @@ function App() {
       <div className="header">
         <Navbar />
       </div>
-      <div>
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-        </Routes>
-      </div>
+      <div className="content">
+      <AppRouter /></div>
       <div className="footer">
         <Footer />
       </div>
-      {/* <Login /> */}
     </div>
   );
 }

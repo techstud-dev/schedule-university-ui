@@ -3,6 +3,7 @@ import ScheduleContainer from "../Components/SchedulePageComponents/ScheduleCont
 function Main() {
     return (
       <div className="Main">
+        <h1>Расписание занятий</h1>
         <ScheduleContainer />
       </div>
     );

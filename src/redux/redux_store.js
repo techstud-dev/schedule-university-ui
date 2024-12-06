@@ -6,14 +6,4 @@ export default configureStore({
     reducer: {
         lesson: lessonSlice
     },
-}) 
-
-// let rootReducers = combineReducers({
-    
-// })
-
-// const store = legacy_createStore(rootReducers);
-
-// window.store = store;
-
-// export default store;
+})
