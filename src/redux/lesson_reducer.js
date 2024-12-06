@@ -1,3 +1,56 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+export const lessonSlice = createSlice({
+  name: "lesson",
+  initialState: {
+    Понедельник: {
+      lessons: {
+        "08:30 - 10:05": [
+          {
+            type: "Лекция",
+            name: "Конструирование узлов и элементов биотехнических систем",
+            teacher: "Шамаев Дмитрий Михайлович",
+            place: "201х",
+            groups: ["БМТ1-51Б,52Б", "БМТ2-51Б,52Б", "БМТ1И-51Б"],
+          },
+        ],
+        "10:15 - 11:50": [
+          {
+            type: "Лекция",
+            name: "Метрология, стандартизация и технические измерения",
+            teacher: "Муравская Наталья Павловна",
+            place: "201х",
+            groups: ["БМТ1-51Б,52Б,53Б", "БМТ2-51Б,52Б", "БМТ1И-51Б"],
+          },
+        ],
+      },
+    },
+  },
+  reducers: {
+    add: (state) => {
+      return {
+        ...state,
+        lessons: [
+          {
+            id: 4,
+            lessonType: state.newlessonType,
+            // body: state.newLessonBody,
+            likes: 0,
+          },
+          ...state.lessons,
+        ],
+        newlessonType: "",
+      };
+    },
+  },
+});
+
+// Action creators are generated for each case reducer function
+export const { add } = lessonSlice.actions;
+
+export default lessonSlice.reducer;
+
+// const ADD_LESSON = "ADD-LESSON";
 // const UPDATE_LESSON = "UPDATE-LESSON";
 // // const ADD_COMMENT = "ADD-COMMENT";
 // // const UPDATE_COMMENT = "UPDATE-COMMENT";
@@ -33,7 +86,14 @@
 
 // const lessonReducer = (state = initialState, action) => {
 //   switch (action.type) {
-//     case UPDATE_LESSON: 
+//     case ADD_LESSON:
+//       return {
+//         ...state,
+//         posts: [ { id: 4, headline: state.newHeadline, body: state.newPostBody, likes: 0, }, ...state.posts],
+//         newHeadline: "",
+//         newPostBody: "",
+//       }
+//     case UPDATE_LESSON:
 //       return {
 //         ...state,
 //         newHeadline: action.newTtext,
@@ -52,13 +112,14 @@
 //   //   case UPDATE_COMMENT:
 //   //     state.newCommentBody = action.body;
 //   //     return state;
-//   //   default:
-//   //     return state;
+//     default:
+//       return state;
 //   }
 // };
 
+// export const addLessonCreator = () => ({ type: ADD_LESSON });
 // export const updatePostCreator = (headline, body) => ({
-//   type: UPDATE_POST,
+//   type: UPDATE_LESSON,
 //   newTtext: headline,
 //   newPText: body,
 // });

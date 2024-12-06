@@ -7,11 +7,17 @@ import Navbar from "./Psges/Navbar";
 function App() {
   return (
     <div className="App">
-      <div className="header"><Navbar /></div>
-      <Routes>
-        <Route path='/' element={<Main />}></Route>
-      </Routes>
-      <div className="footer"><Footer /></div>           
+      <div className="header">
+        <Navbar />
+      </div>
+      <div>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+        </Routes>
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
       {/* <Login /> */}
     </div>
   );

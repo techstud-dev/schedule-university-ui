@@ -1,8 +1,15 @@
-// import { combineReducers, legacy_createStore } from "redux";
-// import lessonReducer from "./lesson_reducer";
+// import { combineReducers, legacy_createStore } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit'
+import lessonSlice from "./lesson_reducer";
+
+export default configureStore({
+    reducer: {
+        lesson: lessonSlice
+    },
+}) 
 
 // let rootReducers = combineReducers({
-//     lesson: lessonReducer
+    
 // })
 
 // const store = legacy_createStore(rootReducers);
