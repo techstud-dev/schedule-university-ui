@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Route, Routes } from "react-router";
 // import { AuthContext } from "../Context/AuthContext";
-import { privateRoutes, publicRoutes } from "./main";
+import { publicRoutes } from "./main";
 
 function AppRouter() {
 //   const {isAuth, isLoading} = useContext(AuthContext);
-  const [isAuth, setIsAuth] = useState(false);
+  // const [isAuth, setIsAuth] = useState(false);
 
 //   if (isLoading) {
 //     return <Loader />;
