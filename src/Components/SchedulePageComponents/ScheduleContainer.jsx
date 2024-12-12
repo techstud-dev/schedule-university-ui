@@ -1,4 +1,5 @@
 import ScheduleCard from "./ScheduleCard";
+import { timeDeterminant } from "../../utils/time";
 
 const setColor = (type) => {
   const backgroundColor = {
@@ -47,6 +48,7 @@ const ScheduleContainer = () => {
     {
       id: 1,
       time: "08:30 - 10:05",
+      date: '01.12.2024',
       type: "Лекция",
       name: "Конструирование узлов и элементов биотехнических систем",
       teacher: "Шамаев Дмитрий Михайлович",
@@ -70,6 +72,25 @@ const ScheduleContainer = () => {
       groups: ["БМТ2-52Б"],
     },
   ];
+
+  for (let i = 0; i < lessons.length; i++) {
+    let lesson = lessons[i];
+    const timeConverter = timeDeterminant(lesson.time);
+    const result = timeConverter();
+
+    lesson.convertedTime = result;
+  }
+
+  let userTimeZone;
+
+  for (let i = 0; i < lessons.length; i++) {
+    if (lessons[i].convertedTime) {
+      
+    }
+  }
+  
+console.log(lessons);
+
 
   return (
     <div>

@@ -16,13 +16,16 @@ const ScheduleCard = ({
   return (
     <div className={m.card}>
       <div className={m.container}>
-        <div
-          className={m.circle}
-          style={{ backgroundColor: circleColor }}
-        ></div>
-        <div className={m.lessonType} style={{ backgroundColor: backColor }}>
-          – {type}: {time}
+        <div className={m.typeWrapper}>
+          <div
+            className={m.circle}
+            style={{ backgroundColor: circleColor }}
+          ></div>
+          <div className={m.lessonType} style={{ backgroundColor: backColor }}>
+            – {type}
+          </div>
         </div>
+        <div className={m.lessonTime}>{time}</div>
       </div>
 
       <div className={m.name}>{name}</div>
