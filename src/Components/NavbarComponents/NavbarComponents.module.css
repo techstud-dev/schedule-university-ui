@@ -1,0 +1,77 @@
+.logoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.profileIcon {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 10px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuLink {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+    padding: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menuLink:hover {
+    background-color: #A3A3A3;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.menuBtn {
+    all: unset;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.menuBtn:hover {
+    background-color: #A3A3A3;
+    color: #fff;
+    border-radius: 5px;
+}
