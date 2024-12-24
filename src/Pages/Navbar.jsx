@@ -5,7 +5,7 @@ import n from "./styles/Navbar.module.css";
 import { useState } from "react";
 
 function Navbar() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth] = useState(false);
   
   return (
     <nav className={n.navbar}>
@@ -21,9 +21,9 @@ function Navbar() {
         ) : (
           <>
             <Link to="/about" className={n.link}>Почему мы?</Link>
-            <button onClick={() => setIsAuth(true)} className={n.button}>
+            <Link to="/login"><button className={n.button}>
               Войти
-            </button>
+            </button></Link>
           </>
         )}
       </div>
