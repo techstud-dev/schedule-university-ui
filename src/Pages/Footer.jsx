@@ -18,7 +18,7 @@ function Footer() {
             consectetur vero dignissimos at maiores quae voluptas, optio,
             blanditiis nobis nostrum amet quasi enim delectus, nisi natus non
             est rem velit!
-          </p>
+          </p> 
         </div>
         <div className={f.footer__courses}>
           <h3 className={f.footer__list__title}>Курсы</h3>

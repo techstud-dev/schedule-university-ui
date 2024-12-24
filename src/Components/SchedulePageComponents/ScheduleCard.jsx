@@ -11,10 +11,10 @@ const ScheduleCard = ({
   place,
   groups,
   time,
-  key,
+  id,
 }) => {
   return (
-    <div className={m.card}>
+    <div className={m.card} key={id}>
       <div className={m.container}>
         <div className={m.typeWrapper}>
           <div
@@ -40,11 +40,10 @@ const ScheduleCard = ({
       <div className={m.location}>Локация: {place}</div>
 
       <div className={m.group}>
-        Группа(ы):
+        Группа(ы):{" "}
         {groups.map((group) => (
           <Link className={m.link} href="#">
-            {", "}
-            {group}
+            {group} {" "}
           </Link>
         ))}
       </div>

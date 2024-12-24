@@ -1,9 +1,11 @@
+import DashboardContainer from "../Components/SchedulePageComponents/DashboardContainer";
 import ScheduleContainer from "../Components/SchedulePageComponents/ScheduleContainer";
 
 function Main() {
     return (
       <div className="Main">
-        <h1>Расписание занятий</h1>
+        <DashboardContainer />
+        <p>----------</p>
         <ScheduleContainer />
       </div>
     );

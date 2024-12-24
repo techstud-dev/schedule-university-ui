@@ -1,7 +1,13 @@
 import ScheduleCard from "./ScheduleCard";
 import { timeDeterminant } from "../../utils/time";
+import { useState } from "react";
+import ScheduleService from "../../API/ScheduleService";
+import { useFetching } from "../../hooks/useFetching";
+import ScheduleListElements from "./ScheduleListElemenst";
+import lesson from '../../redux/redux_store'
+import { lessonSlice } from "../../redux/lesson_reducer";
 
-const setColor = (type) => {
+export const setColor = (type) => {
   const backgroundColor = {
     lecture: "#A8E0B8",
     practice: "#ADD8E6",
@@ -44,74 +50,48 @@ const setColor = (type) => {
 };
 
 const ScheduleContainer = () => {
-  const lessons = [
-    {
-      id: 1,
-      time: "08:30 - 10:05",
-      date: '01.12.2024',
-      type: "Лекция",
-      name: "Конструирование узлов и элементов биотехнических систем",
-      teacher: "Шамаев Дмитрий Михайлович",
-      place: "201х",
-      groups: ["БМТ1-51Б,52Б", "БМТ2-51Б,52Б", "БМТ1И-51Б"],
-    },
-    {
-      id: 2,
-      time: "15:40 - 17:15",
-      type: "Практика",
-      name: "Политология",
-      teacher: "Шалдунова Татьяна Николаевна",
-      place: "203х",
-      groups: ["БМТ2-52Б"],
-    },
-    {
-      id: 3,
-      time: "08:30 - 10:05",
-      type: "Другое",
-      name: "ВУЦ",
-      groups: ["БМТ2-52Б"],
-    },
-  ];
+  const getbasicWeek = lesson.getState();
+  const [lessons, setLessons] = useState(getbasicWeek.lesson);
 
-  for (let i = 0; i < lessons.length; i++) {
-    let lesson = lessons[i];
-    const timeConverter = timeDeterminant(lesson.time);
-    const result = timeConverter();
 
-    lesson.convertedTime = result;
-  }
+  const userDay = new Date().getDay()
+  
+  const [fetchSchedule, isScheduleLoading, scheduleError] = useFetching(
+    async () => {
+      const response = await ScheduleService.getDefaultSchedule();
+      console.log(response)
+      setLessons({ response });
+    }
+  );
 
-  let userTimeZone;
+  // let newLessons = [];
+  // for (let i = 0; i < lessons.length; i++) {
+  //   newLessons[i] = { ...lessons[i] };
+  //   const timeConverter = timeDeterminant(newLessons[i].time);
+  //   const result = timeConverter();
+
+  //   newLessons[i].convertedTime = result;
+  // }
+
+  // let userTimeZone;
 
   for (let i = 0; i < lessons.length; i++) {
     if (lessons[i].convertedTime) {
-      
     }
   }
-  
-console.log(lessons);
-
 
   return (
     <div>
-      {lessons.map((lesson) => {
-        const resultBackColor = setColor(lesson.type);
-        const resultCircleColor = setColor(lesson.type);
+      {scheduleError && <h4>Случилась ошибка ^_^</h4>}
 
-        return (
-          <ScheduleCard
-            key={lesson.id}
-            time={lesson.time}
-            type={lesson.type}
-            name={lesson.name}
-            teacher={lesson.teacher}
-            place={lesson.place}
-            groups={lesson.groups}
-            backColor={resultBackColor.back}
-            circleColor={resultCircleColor.circle}
-          />
-        );
-      })}
+      {isScheduleLoading ? (
+        <div>
+          <p>Загрузка...</p>
+          <p>Пожалуйста подождите XD</p>
+        </div>
+      ) : (
+        <ScheduleListElements lessons={lessons} userDay={userDay} />
+      )}
     </div>
   );
 };
