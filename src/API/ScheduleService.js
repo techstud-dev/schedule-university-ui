@@ -8,7 +8,7 @@ export default class ScheduleService {
     return response;
   }
 
-  // на период теста
+  // на период разработки и теста
   static getDefaultSchedule() {
     const fakeResponse = {
       oddWeekSchedules: [
@@ -1838,8 +1838,7 @@ export default class ScheduleService {
       },
     };
 
-    console.log(fakeResponse);
-
-    return fakeResponse;
+    const result = [...fakeResponse.evenWeekSchedules, ...fakeResponse.oddWeekSchedules]
+    return result;
   }
 }

@@ -14,5 +14,6 @@ export function useFetching(callback) {
       setIsLoading(false);
     }
   };
+  
   return [fetching, isLoading, error];
 }

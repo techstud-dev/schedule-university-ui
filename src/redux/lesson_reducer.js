@@ -81,7 +81,7 @@ export const lessonSlice = createSlice({
       date: 1733992037382,
       time: "Весь день",
       type: "Пар нет",
-      name: "Отдых",
+      name: "Пар нет XD",
       teacher: "Ты сам себе препод",
       place: "Где хочешь",
       groups: ["Только у тебя"],

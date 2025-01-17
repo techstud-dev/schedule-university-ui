@@ -4,11 +4,11 @@ ul {
     padding: 0;
 }
 
-a {
+/* a {
     text-decoration: none;
     transition: color 0.3s ease;
     color: black;
-}
+} */
 
 
 
@@ -44,7 +44,6 @@ a {
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
-
 }
 
 .footer__container {

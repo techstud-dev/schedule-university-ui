@@ -1,6 +1,7 @@
 .logoWrapper {
     display: flex;
     align-items: center;
+    padding: 10px;
 }
 
 .logoLink {
@@ -20,7 +21,19 @@
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: #fff;
+}
+
+.link__item {
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link__item:hover {
+    text-decoration: underline;
+    color: #A3A3A3;
 }
 
 .profileIcon {
@@ -36,6 +49,7 @@
 }
 
 .menu {
+    background-color: #fff;
     position: absolute;
     top: 100%;
     right: 0;

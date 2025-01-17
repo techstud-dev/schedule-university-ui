@@ -1,19 +1,20 @@
-// import { useState } from "react";
-import { Route, Routes } from "react-router";
-// import { AuthContext } from "../Context/AuthContext";
-import { publicRoutes } from "./main";
+import { Navigate, Route, Routes } from "react-router";
+import { privateRoutes, publicRoutes } from "./main";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 function AppRouter() {
-//   const {isAuth, isLoading} = useContext(AuthContext);
-  // const [isAuth, setIsAuth] = useState(false);
+  const { isAuth, isLoading } = useContext(AuthContext);
 
-//   if (isLoading) {
-//     return <Loader />;
-//   }
+    if (isLoading) {
+      return (
+        <div>Загружаемся...</div>
+      );
+    }
 
   return (
     <div>
-      {/* {isAuth ? ( */}
+      {!isAuth ? (
         <Routes>
           {publicRoutes.map((route) => (
             <Route
@@ -22,9 +23,10 @@ function AppRouter() {
               key={route.path}
             />
           ))}
-          {/* <Route path="/*" element={<Navigate to="/login" replace />} /> */}
+          <Route path="/*" element={<Navigate to="/login" replace />} />
         </Routes>
-        {/* <Routes>
+      ) : (
+        <Routes>
           {privateRoutes.map((route) => (
             <Route
               path={route.path}
@@ -32,9 +34,9 @@ function AppRouter() {
               key={route.path}
             />
           ))}
-          <Route path="/*" element={<Navigate to="/" replace />} />
-        </Routes> */}
-
+          <Route path="/*" element={<Navigate to="/schedule" replace />} />
+        </Routes>
+      )}
     </div>
   );
 }

@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
 import p from "./NavbarComponents.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import profileIcon from "../../assets/icons/profile.png";
+import { AuthContext } from "../../Context/AuthContext";
 
 const ProfileElement = () => {
-  // Состояние для отслеживания видимости меню
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  // Функция для переключения состояния меню
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
+  };
+
+  const logout = (e) => {
+    setIsAuth(false);
+    localStorage.removeItem("auth");
   };
 
   return (
@@ -23,18 +28,13 @@ const ProfileElement = () => {
 
       {isMenuOpen && (
         <div className={p.menu}>
-            <Link to="/profile" className={p.menuLink} onClick={toggleMenu}>
-              Профиль
-            </Link>
-            <Link to="/settings" className={p.menuLink} onClick={toggleMenu}>
-              Настройки
-            </Link>
-          <button
-            className={p.menuBtn}
-            onClick={() => {
-              /* Здесь добавлю логику выхода */
-            }}
-          >
+          <Link to="/profile" className={p.menuLink} onClick={toggleMenu}>
+            Профиль
+          </Link>
+          <Link to="/settings" className={p.menuLink} onClick={toggleMenu}>
+            Настройки
+          </Link>
+          <button className={p.menuBtn} onClick={logout}>
             Выйти
           </button>
         </div>

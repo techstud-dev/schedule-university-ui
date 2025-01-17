@@ -1,12 +1,9 @@
-import DashboardContainer from "../Components/SchedulePageComponents/DashboardContainer";
-import ScheduleContainer from "../Components/SchedulePageComponents/ScheduleContainer";
+import ScheduleMain from "../Components/ScheduleComponents/ScheduleMain";
 
 function Main() {
     return (
       <div className="Main">
-        <DashboardContainer />
-        <p>----------</p>
-        <ScheduleContainer />
+        <ScheduleMain />
       </div>
     );
   }
