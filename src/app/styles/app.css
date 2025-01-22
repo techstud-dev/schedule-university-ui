@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  flex: 0 0 auto;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
