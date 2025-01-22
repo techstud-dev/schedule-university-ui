@@ -1,54 +1,28 @@
-import { useEffect, useState } from "react";
-import { useInput } from "../../hooks/useInput";
-import { Input } from "../UI/Input";
+import { useState } from "react";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import l from "./styles/Login.module.css";
 
 const LoginContainer = () => {
-  const email = useInput("", {
-    isEmpty: true,
-    isMinLengthError: 5,
-    isEmail: false,
-  });
-  const password = useInput("", {
-    isEmpty: true,
-    isMinLengthError: 6,
-    isMaxLengthError: 15,
-  });
+  const [viewMode, setViewMode] = useState("login");
+
+  const loginSwitch = () => {
+      setViewMode("login");
+  };
+  const signupSwitch = () => {
+      setViewMode("signup");
+  };
 
   return (
     <div>
-      <form>
-        {email.isDirty && email.isEmpty && <div>Поле не может быть пустым</div>}
-        {email.isDirty && email.isMinLengthError && (
-          <div>Слишком короткий email</div>
-        )}
-        {email.isDirty && email.isEmailError && <div>Некорректный email</div>}
-        <Input
-          value={email.value}
-          onChange={(e) => email.onChange(e)}
-          onBlur={(e) => email.onBlur(e)}
-          name={"email"}
-          placeholder={"Электронная почта"}
-        />
-        {password.isDirty && password.isEmpty && (
-          <div>Поле не может быть пустым</div>
-        )}
-        {password.isDirty && password.isMinLengthError && (
-          <div>Слишком короткий пароль</div>
-        )}
-        {password.isDirty && password.isMaxLengthError && (
-          <div>Слишком длинный пароль</div>
-        )}
-        <Input
-          value={password.value}
-          name={"password"}
-          placeholder={"Пароль"}
-          onChange={(e) => password.onChange(e)}
-          onBlur={(e) => password.onBlur(e)}
-        />
-        <button disabled={!email.isInputValid || !password.isInputValid}>
-          Войти
-        </button>
-      </form>
+      <div className={l.login_button_wrapper}>
+        <button className={l.nav_button} onClick={loginSwitch}>Войти</button>
+        <button className={l.nav_button} onClick={signupSwitch}>Зарегистрироваться</button>
+      </div>
+      <h1 className={l.login_title}>{viewMode === 'login' ? "Вход в систему" : "Регистрация"}</h1>
+      <div>
+        {viewMode === 'login' ? <Login /> : <SignUp />}
+      </div>
     </div>
   );
 };
