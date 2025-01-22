@@ -1,7 +1,7 @@
 import { setColor } from "../model/setColor";
 import Card from "./Card";
-
-function Schedule() {
+ 
+const Schedule = () => {
   const lessons = [
     {
       id: 1,
