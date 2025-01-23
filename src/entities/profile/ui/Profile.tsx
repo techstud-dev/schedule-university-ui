@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import p from "./Profile.module.css";
 import { useContext, useState } from "react";
 import profileIcon from "@/shared/assets/icons/profile.png";
-import { AuthContext } from "../../../context/AuthContext";
+import { AuthContext } from "../../../app/context/AuthContext";
 
 const Profile = () => {
   const authContext = useContext(AuthContext);

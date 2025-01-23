@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useInput } from "../../../hooks/useInput";
+import { useInput } from "../../../shared/hooks/useInput";
 import l from "./Login.module.css";
 import passHideIcon from "../../../shared/assets/icons/pass_hide.png";
 import passShowIcon from "../../../shared/assets/icons/pass_show.png";

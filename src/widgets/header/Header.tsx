@@ -3,7 +3,7 @@ import Profile from "@/entities/profile/ui/Profile";
 import Logo from "@/shared/ui/logo/Logo";
 import n from "./Header.module.css";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../app/context/AuthContext";
 
 const Header = () => {
   const authContext = useContext(AuthContext);

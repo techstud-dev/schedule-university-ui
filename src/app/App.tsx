@@ -2,7 +2,7 @@ import "./styles/app.css";
 import { Outlet } from "react-router-dom";
 import Header from "@/widgets/header/Header";
 import Footer from "@/widgets/footer/Footer";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "./context/AuthContext";
 import { useEffect, useState } from "react";
 
 function App() {
