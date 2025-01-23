@@ -2,10 +2,22 @@ import { Link } from "react-router-dom";
 import Profile from "@/entities/profile/ui/Profile";
 import Logo from "@/shared/ui/logo/Logo";
 import n from "./Header.module.css";
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-function Header() {
-  const [isAuth, setIsAuth] = useState(false);
+const Header = () => {
+  const authContext = useContext(AuthContext);
+  
+  if (!authContext) {
+    throw new Error('useContext must be used within an AuthProvider');
+  }
+
+  const { isAuth, setIsAuth } = authContext;
+
+  const login = () => {
+    setIsAuth(true);
+    localStorage.setItem("auth", "token123");
+  };
   
   return (
     <nav className={n.navbar}>
@@ -20,9 +32,11 @@ function Header() {
           </>
         ) : (
           <>
-            <Link to="/about" className={n.link}>Почему мы?</Link>
-            <button onClick={() => setIsAuth(true)} className={n.button}>
-              Войти
+            <Link to="/about" className={n.link}>
+              Почему мы?
+            </Link>
+            <button onClick={login} className={n.button}>
+              <Link to={"/schedule"}>Войти</Link>
             </button>
           </>
         )}

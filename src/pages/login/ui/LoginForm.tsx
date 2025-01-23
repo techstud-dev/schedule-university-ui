@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useInput } from "../../../hooks/useInput";
-import l from "./styles/Login.module.css";
-import passHideIcon from "../../assets/icons/pass_hide.png";
-import passShowIcon from "../../assets/icons/pass_show.png";
+import l from "./Login.module.css";
+import passHideIcon from "../../../shared/assets/icons/pass_hide.png";
+import passShowIcon from "../../../shared/assets/icons/pass_show.png";
 // import InputErrors from "../UI/InputErrors";
 
 const Login = () => {

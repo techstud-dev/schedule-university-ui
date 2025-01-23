@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import l from "./styles/Login.module.css";
+import l from "./Login.module.css";
 
 const Login = () => {
   const [viewMode, setViewMode] = useState("login");

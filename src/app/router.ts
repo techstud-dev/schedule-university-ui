@@ -1,6 +1,7 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
-import Schedule from "@/entities/schedule/ui/Schedule";
+// import Schedule from "../entities/schedule/ui/";
+import Login from "../pages/login/ui/LoginForm";
 
 export const router = createBrowserRouter([
   {
@@ -9,11 +10,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => redirect('/schedule')
+        loader: () => redirect('/login')
       },
       {
         path: '/schedule',
-        Component: Schedule
+        // Component: Schedule
+      },
+      {
+        path: '/login',
+        Component: Login
       }
     ]
   }
