@@ -1,0 +1,24 @@
+.input input{
+    width: 100%;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.input input:active{
+    border-color: #8E8E93;
+}
+
+.input input::placeholder {
+    color: #8E8E93;
+}
+
+.error input {
+    border-color: #F04646;
+}
+
+.errorMessage {
+    color: #F04646;
+    height: 16px;
+}

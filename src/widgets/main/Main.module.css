@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    height: 100vh;
+}
+
+.container img,
+.container div {
+    flex: 1;
+}
+
+.container img {
+    height: auto;
+}
+
+.container h1 {
+    margin-bottom: 40px;
+}
