@@ -15,6 +15,7 @@ export const Modal = (props: ModalProps) => {
 
         if (target.dataset.class === 'overlay') {
             setIsOpen(false);
+            console.log('hi')
         }
     };
 

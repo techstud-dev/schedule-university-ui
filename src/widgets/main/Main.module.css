@@ -6,8 +6,8 @@
     height: 100vh;
 }
 
-.container img,
-.container div {
+.container > img,
+.container > div {
     flex: 1;
 }
 
