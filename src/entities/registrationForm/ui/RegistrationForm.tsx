@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CustomInput } from "../../../shared/ui/input/Input";
+import { Input } from "../../../shared/ui/input/Input";
 import { useModal } from "../../../shared/hooks/useModal";
 import { VisuallyHidden } from "../../../shared/ui/visuallyHidden/VisuallyHidden";
 import { Text } from "../../../shared/ui/text/Text";
@@ -149,7 +149,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({changeOpen}) 
     return (
             <form onSubmit={getFormData}>
                 {fields.map(field => 
-                    <CustomInput 
+                    <Input 
                         key={field.id}
                         className={r.input}
                         label={field.label}
