@@ -2,21 +2,15 @@ import { Link } from "react-router-dom";
 import Profile from "@/entities/profile/ui/Profile";
 import Logo from "@/shared/ui/logo/Logo";
 import n from "./Header.module.css";
-import { useContext } from "react";
-import { AuthContext } from "../../app/context/AuthContext";
+import { useAppDispatch, useAppSelector } from "@/app/store";
+import { authSlice } from "@/features/auth/model/auth.slice";
 
 const Header = () => {
-  const authContext = useContext(AuthContext);
-  
-  if (!authContext) {
-    throw new Error('useContext must be used within an AuthProvider');
-  }
-
-  const { isAuth, setIsAuth } = authContext;
+  const dispatch = useAppDispatch();
+  const isAuth = useAppSelector(state => authSlice.selectors.selectAuth(state))
 
   const login = () => {
-    setIsAuth(true);
-    localStorage.setItem("auth", "token123");
+    dispatch(authSlice.actions.login())
   };
   
   return (

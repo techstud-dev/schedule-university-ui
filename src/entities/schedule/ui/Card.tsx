@@ -1,7 +1,7 @@
-import m from "../styles/Cards.module.css";
+import { useDate } from "@/shared/hooks/useDate";
+import m from "./Card.module.css";
 import { Link } from "react-router-dom";
-// import { setColor } from "../../../utils/setLessonsColor";
-// import { useDate } from "../../../hooks/useDate";
+import { setColor } from "../model/setColor";
 
 const ScheduleCard = ({ dayOfWeek, date, lessons }) => {
   const lessonDate = useDate(date) 

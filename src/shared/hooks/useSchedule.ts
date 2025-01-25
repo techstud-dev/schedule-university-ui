@@ -12,7 +12,9 @@ interface Lesson {
   _links: object;
 }
 
-export const useSchedule = (schedule: Lesson[], value: "even" | "odd") => {
+export type parity = "even" | "odd";
+
+export const useSchedule = (schedule: Lesson[], value: parity) => {
   const newSchedule: Lesson[] = [];
 
   const weekDays = {

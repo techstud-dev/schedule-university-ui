@@ -1,5 +1,5 @@
-import Loader from "../../UI/Loader";
-import d from "../styles/Dashboard.module.css";
+import Loader from "@/shared/ui/loader/Loader";
+import d from "./Dashboard.module.css";
 import DashboardItem from "./DashboardItem";
 
 const Dashboard = ({

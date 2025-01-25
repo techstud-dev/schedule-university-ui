@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import s from "./styles/Dashboard.module.css";
-import ScheduleService from "../../../app/ScheduleService";
-import { useSchedule } from "../../../hooks/useSchedule";
+import { useEffect, useState } from "react";
+import s from "./Dashboard.module.css";
+import ScheduleService from "../model/ScheduleService";
+import { parity, useSchedule } from "@/shared/hooks/useSchedule";
 import Dashboard from "./Dashboard";
-import { useFetching } from "../../../hooks/useFetching";
+import { useFetching } from "@/shared/hooks/useFetching";
 import ScheduleList from "./ScheduleList";
 
 
 const Schedule = () => {
   const [viewMode, setViewMode] = useState("week");
-  const [weekViewMode, setWeekViewMode] = useState("even");
+  const [weekViewMode, setWeekViewMode] = useState<parity>("even");
   const [schedule, setSchedule] = useState([]);
 
   const userDay = new Date().getDay();
@@ -62,7 +62,6 @@ const Schedule = () => {
           fri={lessonsData[4]}
           sat={lessonsData[5]}
           sun={lessonsData[6]}
-          userDay={userDay}
           isScheduleLoading={isScheduleLoading}
         />
       ) : (

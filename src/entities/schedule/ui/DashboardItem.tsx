@@ -1,5 +1,5 @@
-import { useDate } from "../../../hooks/useDate";
-import d from "../styles/Dashboard.module.css";
+import { useDate } from "@/shared/hooks/useDate";
+import d from "./Dashboard.module.css";
 
 const DashboardItem = ({ dayOfWeek, date, lessons }) => {
   let counter = 1;
