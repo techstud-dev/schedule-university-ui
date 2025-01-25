@@ -6,13 +6,15 @@
     height: 100vh;
 }
 
-.container > img,
 .container > div {
     flex: 1;
 }
 
 .container img {
+    width: 60%;
     height: auto;
+    margin: auto;
+    display: block;
 }
 
 .container h1 {
