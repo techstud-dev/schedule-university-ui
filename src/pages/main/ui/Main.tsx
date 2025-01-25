@@ -13,7 +13,9 @@ function Main () {
                 </Text>
                 <LinkCustom path={"/schedule"}>Зарегистрироваться</LinkCustom>
             </div>
-            <img src={main} alt='картинка' width='250' height='200'/>
+            <div>
+                <img src={main} alt='картинка' width='250' height='200'/>
+            </div>
         </section>
     )
 }
