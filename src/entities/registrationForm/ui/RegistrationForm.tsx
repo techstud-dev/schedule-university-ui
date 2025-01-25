@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Input } from "../../../shared/ui/input/Input";
-import { useModal } from "../../../shared/hooks/useModal";
-import { VisuallyHidden } from "../../../shared/ui/visuallyHidden/VisuallyHidden";
-import { Text } from "../../../shared/ui/text/Text";
+import { useModal } from "@/shared/hooks/useModal";
+import { Input } from "@/shared/ui/input/Input";
+import { Text } from "@/shared/ui/text/Text";
+import { VisuallyHidden } from "@/shared/ui/visuallyHidden/VisuallyHidden";
 import r from "./RegistrationForm.module.css";
 
 const fields = [

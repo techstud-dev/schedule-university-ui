@@ -1,9 +1,9 @@
-import { Text } from "../../shared/ui/text/Text";
-import main from "../../shared/assets/images/main.png";
-import { LinkCustom } from "../../shared/ui/linkCustom/linkCustom";
+import { LinkCustom } from "@/shared/ui/linkCustom/LinkCustom";
+import { Text } from "@/shared/ui/text/Text";
+import main from "@/shared/assets/images/main.png";
 import m from "./Main.module.css";
 
-export const Main = () => {
+function Main () {
     return (
         <section className={m.container}>
             <div>
@@ -11,9 +11,11 @@ export const Main = () => {
                     "Schedule University - единая система расписания вузов"
                     Присоединяйся и попробуй, насколько это удобно
                 </Text>
-                <LinkCustom path={'/'}>Зарегистрироваться</LinkCustom>
+                <LinkCustom path={"/schedule"}>Зарегистрироваться</LinkCustom>
             </div>
             <img src={main} alt='картинка' width='250' height='200'/>
         </section>
     )
 }
+
+export default Main

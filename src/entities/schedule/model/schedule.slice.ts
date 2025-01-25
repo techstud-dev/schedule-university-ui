@@ -33,11 +33,11 @@ export const scheduleSlice = createSlice({
         lessons: [
           {
             id: 4,
-            lessonType: state.newlessonType,
+            // lessonType: state.newlessonType,
             // body: state.newLessonBody,
             likes: 0,
           },
-          ...state.lessons,
+          // ...state.lessons,
         ],
         newlessonType: "",
       };

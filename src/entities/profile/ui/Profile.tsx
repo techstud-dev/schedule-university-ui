@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom";
 import p from "./Profile.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import profileIcon from "@/shared/assets/icons/profile.png";
+import { AuthContext } from "../../../app/context/AuthContext";
 
 const Profile = () => {
-  // Состояние для отслеживания видимости меню
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("useContext must be used within an AuthProvider");
+  }
+
+  const { isAuth, setIsAuth } = authContext;
+
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  // Функция для переключения состояния меню
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
+  };
+
+  const logout = () => {
+    setIsAuth(false);
+    localStorage.removeItem("auth");
   };
 
   return (
@@ -23,20 +35,21 @@ const Profile = () => {
 
       {isMenuOpen && (
         <div className={p.menu}>
-            <Link to="/profile" className={p.menuLink} onClick={toggleMenu}>
-              Профиль
-            </Link>
-            <Link to="/settings" className={p.menuLink} onClick={toggleMenu}>
-              Настройки
-            </Link>
-          <button
-            className={p.menuBtn}
-            onClick={() => {
-              /* Здесь добавлю логику выхода */
-            }}
-          >
-            Выйти
-          </button>
+          <Link to="/profile" className={p.menuLink} onClick={toggleMenu}>
+            Профиль
+          </Link>
+          <Link to="/settings" className={p.menuLink} onClick={toggleMenu}>
+            Настройки
+          </Link>
+          {isAuth ? (
+            <button className={p.menuBtn} onClick={logout}>
+              Выйти
+            </button>
+          ) : (
+            <button className={p.menuBtn}>
+              Войти
+            </button>
+          )}
         </div>
       )}
     </div>

@@ -1,0 +1,115 @@
+.login_container {
+    max-width: 900px;
+    /* width: 100%; */
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+}
+
+.login_button_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login_title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_input {
+    flex: 1;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    transition: border-color 0.3s;
+}
+
+.login_input:focus {
+    border-color: #e0e0e0;
+    outline: none;
+}
+
+.login_input:invalid {
+    border: 2px solid red; 
+}
+
+/* .login_input:valid {
+    border: 2px solid green;
+} */
+
+.input_group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.input_group .login_input:nth-child(odd) {
+    margin-right: 10px;
+}
+
+.password_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle_password {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.error_message {
+    color: #e63946;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.nav_button {
+    margin-right: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    transition: background-color 0.1s;
+    cursor: pointer;
+}
+
+.nav_button:hover {
+    background-color: #efefef;
+}
+
+.login_button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    transition: background-color 0.1s;
+    cursor: pointer;
+}
+
+.login_button:disabled {
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+}
+
+.login_button:not(:disabled):hover {
+    background-color: #efefef;
+}
