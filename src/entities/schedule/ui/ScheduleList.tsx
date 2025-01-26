@@ -1,5 +1,5 @@
+import Loader from "@/shared/ui/loader/Loader";
 import Card from "./Card";
-// import Loader from "../../UI/Loader";
 
 const ScheduleList = ({
   userDay,
@@ -16,8 +16,7 @@ const ScheduleList = ({
     <div>
       {isScheduleLoading ? (
         <>
-        <div>Идёт загрузка...</div>
-         {/* <Loader /> */}
+          <Loader />
         </>
       ) : (
         <>

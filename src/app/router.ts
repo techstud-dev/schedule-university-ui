@@ -1,7 +1,10 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
 // import Schedule from "../entities/schedule/ui/";
-import Login from "../pages/login/ui/LoginForm";
+import Login from "../features/auth/ui/LoginForm";
+import Schedule from "@/entities/schedule/ui/Schedule";
+import { store } from "./store";
+import { authSlice } from "@/features/auth/model/auth.slice";
 
 const isAuthenticated = () => {
   // Пример проверки авторизации
@@ -9,6 +12,8 @@ const isAuthenticated = () => {
 };
 
 const requireAuth = () => {
+  store.dispatch(authSlice.actions.checkAuth())
+
   if (!isAuthenticated()) {
     return redirect('/login');
   }
@@ -28,7 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/schedule',
-        // Component: Schedule,
+        Component: Schedule,
         loader: requireAuth,
       },
       {
