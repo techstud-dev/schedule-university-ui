@@ -1,6 +1,9 @@
-interface Lesson {
+
+export type dayOfWeek = 'Понедельник' | 'Вторник' | 'Среда' | 'Четверг' | 'Пятница' | 'Суббота' | 'Воскресенье'
+
+export interface Lesson {
   id: string;
-  dayOfWeek: string;
+  dayOfWeek: dayOfWeek;
   date: number;
   time: string;
   type: string;

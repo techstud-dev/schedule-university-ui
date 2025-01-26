@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import p from "./Profile.module.css";
+import p from "./Profile.module.scss";
 import { useState } from "react";
 import profileIcon from "@/shared/assets/icons/profile.png";
 import { useAppDispatch, useAppSelector } from "@/app/store";

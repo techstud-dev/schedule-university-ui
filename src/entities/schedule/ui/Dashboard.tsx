@@ -1,6 +1,18 @@
 import Loader from "@/shared/ui/loader/Loader";
-import d from "./Dashboard.module.css";
+import d from "./Dashboard.module.scss";
 import DashboardItem from "./DashboardItem";
+import { Lesson } from "@/shared/hooks/useSchedule";
+
+export interface Dashboard {
+  mon: Lesson;
+  tue: Lesson;
+  wed: Lesson;
+  thu: Lesson;
+  fri: Lesson;
+  sat: Lesson;
+  sun: Lesson;
+  isScheduleLoading: boolean;
+}
 
 const Dashboard = ({
   mon,
@@ -11,7 +23,7 @@ const Dashboard = ({
   sat,
   sun,
   isScheduleLoading,
-}) => {
+}: Dashboard) => {
   return (
     <div className={d.container}>
       {isScheduleLoading ? (
