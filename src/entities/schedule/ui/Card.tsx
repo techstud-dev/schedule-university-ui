@@ -2,9 +2,9 @@ import { useDate } from "@/shared/hooks/useDate";
 import m from "./Card.module.scss";
 import { Link } from "react-router-dom";
 import { setColor } from "../model/setColor";
-import { Lesson } from "@/shared/hooks/useSchedule";
+import { newSchedule, Lesson } from "@/shared/hooks/useSchedule";
 
-const ScheduleCard = ({ dayOfWeek, date, lessons }) => {
+const ScheduleCard = ({ dayOfWeek, date, lessons }: newSchedule) => {
   const lessonDate = useDate(date) 
 
   if (Array.isArray(lessons) && lessons.length === 0) {

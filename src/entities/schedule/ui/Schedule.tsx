@@ -16,9 +16,11 @@ const Schedule = () => {
 
   const lessonsData = useSchedule(schedule, weekViewMode);
 
+  console.log(lessonsData)
+
   const [fetchSchedule, isScheduleLoading, scheduleError] = useFetching(
     async () => {
-      const response = await ScheduleService.getDefaultSchedule();
+      const response = await ScheduleService.getDefaultSchedule();  
       setSchedule(response);
     }
   );

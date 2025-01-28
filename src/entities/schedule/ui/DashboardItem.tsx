@@ -1,14 +1,8 @@
 import { useDate } from "@/shared/hooks/useDate";
 import d from "./Dashboard.module.scss";
-import { dayOfWeek, Lesson } from "@/shared/hooks/useSchedule";
+import { newSchedule } from "@/shared/hooks/useSchedule";
 
-interface DashboardItem {
-  dayOfWeek: dayOfWeek;
-  date: number;
-  lessons: Lesson[];
-}
-
-const DashboardItem = ({ dayOfWeek, date, lessons }: DashboardItem) => {
+const DashboardItem = ({ dayOfWeek, date, lessons }: newSchedule) => {
   let counter = 1;
   const lessonDate = useDate(date) 
 
