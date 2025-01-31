@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import s from "./Dashboard.module.scss";
-import ScheduleService from "../model/ScheduleService";
 import { parity, useSchedule } from "@/shared/hooks/useSchedule";
 import Dashboard from "./Dashboard";
-import { useFetching } from "@/shared/hooks/useFetching";
 import ScheduleList from "./ScheduleList";
+import { useLazyGetEvenWeekSchedulesQuery, useLazyGetOddWeekSchedulesQuery } from "../api/scheduleAPI";
 
 
 const Schedule = () => {
@@ -13,21 +12,30 @@ const Schedule = () => {
   const [schedule, setSchedule] = useState([]);
 
   const userDay = new Date().getDay();
-
+  
   const lessonsData = useSchedule(schedule, weekViewMode);
 
-  console.log(lessonsData)
-
-  const [fetchSchedule, isScheduleLoading, scheduleError] = useFetching(
-    async () => {
-      const response = await ScheduleService.getDefaultSchedule();  
-      setSchedule(response);
-    }
-  );
-
+  const [fetchOddWeek, {isError: isOddError, isLoading: isOddLoading}] = useLazyGetOddWeekSchedulesQuery();
+  const [fetchEvenWeek, {isError: isEvenError, isLoading: isEventLoading}] = useLazyGetEvenWeekSchedulesQuery();
+  
   useEffect(() => {
-    fetchSchedule();
+    const fetchData = async () => {
+      try {
+        const [oddWeek, evenWeek] = await Promise.all([
+          fetchOddWeek().unwrap(),
+          fetchEvenWeek().unwrap(),
+        ]);
+
+        setSchedule([...oddWeek, ...evenWeek]);
+      } catch (error) {
+        console.error("Ошибка загрузки расписания:", error);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  
 
   const handleViewChange = (e) => {
     if (viewMode === "week") {
@@ -46,7 +54,7 @@ const Schedule = () => {
 
   return (
     <div className={s.wrapper}>
-      {scheduleError && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
+      {(isOddError || isEvenError) && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
 
       <button className={s.toggleBtn} onClick={(e) => handleViewChange(e)}>
         {viewMode === "week" ? "Неделя" : "День"}
@@ -64,7 +72,7 @@ const Schedule = () => {
           fri={lessonsData[4]}
           sat={lessonsData[5]}
           sun={lessonsData[6]}
-          isScheduleLoading={isScheduleLoading}
+          isScheduleLoading={isOddLoading || isEventLoading}
         />
       ) : (
         <ScheduleList
@@ -76,7 +84,7 @@ const Schedule = () => {
           sat={lessonsData[5]}
           sun={lessonsData[6]}
           userDay={userDay}
-          isScheduleLoading={isScheduleLoading}
+          isScheduleLoading={isOddLoading || isEventLoading}
         />
       )}
     </div>
