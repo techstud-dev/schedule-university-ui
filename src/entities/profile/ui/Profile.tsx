@@ -1,20 +1,13 @@
 import { Link } from "react-router-dom";
 import p from "./Profile.module.css";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import profileIcon from "@/shared/assets/icons/profile.png";
 import { useAppDispatch, useAppSelector } from "@/app/store";
 import { authSlice } from "@/features/auth/model/auth.slice";
-import { AuthContext } from "../../../app/context/AuthContext";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector(state => authSlice.selectors.selectAuth(state))
-
-  const authContext = useContext(AuthContext);
-  if (!authContext) {
-    throw new Error("useContext must be used within an AuthProvider");
-  }
-  const { isAuth, setIsAuth } = authContext;
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -23,8 +16,7 @@ const Profile = () => {
   };
 
   const logout = () => {
-    setIsAuth(false);
-    localStorage.removeItem("auth");
+    dispatch(authSlice.actions.logout());
   };
 
   return (
@@ -45,9 +37,9 @@ const Profile = () => {
             Настройки
           </Link>
           {isAuth ? (
-            <button className={p.menuBtn} onClick={logout}>
+            <Link to="/login" className={p.menuBtn} onClick={logout}>
               Выйти
-            </button>
+            </Link>
           ) : (
             <button className={p.menuBtn}>
               Войти
