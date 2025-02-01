@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'; 
-import l from './LinkCustom.module.css';
 import { getStyles } from '../../libs/getStyles';
+import l from './LinkCustom.module.scss';
 
 interface LinkCustomProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     className?: string;
     path: string;
     children: React.ReactNode;
-    size?: 'xs' | 'sm' | 'md' | 'lg'; 
+    size?: 'xs' | 's' | 'm' | 'l'; 
     color?: 'primary' | 'secondary' ; 
     disabled?: boolean; 
     outlined?: boolean;

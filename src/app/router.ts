@@ -5,6 +5,7 @@ import Login from "../features/auth/ui/LoginForm";
 import Schedule from "@/entities/schedule/ui/Schedule";
 import { store } from "./store";
 import { authSlice } from "@/features/auth/model/auth.slice";
+import WellcomePage from "@/pages/ui/welicome/WellcomePage";
 
 const isAuthenticated = () => {
   // Пример проверки авторизации
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         Component: Login
+      },
+      {
+        path: 'wellcome',
+        Component: WellcomePage
       }
     ]
   }
