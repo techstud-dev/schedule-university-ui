@@ -1,4 +1,4 @@
-import main from "@/shared/assets/images/main.png";
+import picture from "@/shared/assets/images/wellcome.png";
 import { Text } from "@/shared/ui/text/Text";
 import { LinkCustom } from "@/shared/ui/linkCustom/LinkCustom";
 import m from "./Wellcome.module.scss";
@@ -15,7 +15,7 @@ function Wellcome () {
                     <LinkCustom path={'/login'}>Зарегистрироваться</LinkCustom>
                 </div>
                 <div>
-                    <img src={main} alt='картинка' width='250' height='200'/>
+                    <img src={picture} alt='черный планшет с белыми строками на фоне оранжевых полукругов и расскрытых книг' width='250' height='200'/>
                 </div>
             </section>
         </main>
