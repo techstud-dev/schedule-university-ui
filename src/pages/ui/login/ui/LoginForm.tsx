@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useInput } from "../../../shared/hooks/useInput";
-import l from "./Login.module.css";
-import passHideIcon from "../../../shared/assets/icons/pass_hide.png";
-import passShowIcon from "../../../shared/assets/icons/pass_show.png";
+import { useInput } from "@/shared/hooks/useInput";
+import l from "./Login.module.scss";
+import passHideIcon from "@/shared/assets/icons/pass_hide.png";
+import passShowIcon from "@/shared/assets/icons/pass_show.png";
 // import InputErrors from "../UI/InputErrors";
 
-const Login = () => {
+const LoginForm = () => {
   const email = useInput("", {
     isEmpty: true,
     isMinLengthError: 5,
@@ -82,4 +82,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

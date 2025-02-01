@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useInput } from "../../../shared/hooks/useInput";
-import l from "./Login.module.css";
-import passHideIcon from "../../../shared/assets/icons/pass_hide.png";
-import passShowIcon from "../../../shared/assets/icons/pass_show.png";
+import { useInput } from "@/shared/hooks/useInput";
+import passHideIcon from "@/shared/assets/icons/pass_hide.png";
+import passShowIcon from "@/shared/assets/icons/pass_show.png";
+import l from "./Login.module.scss";
 
 const SignupForm = () => {
   const vuzs = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];

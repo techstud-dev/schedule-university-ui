@@ -1,0 +1,67 @@
+$font-size-16: var(--font-size-16);
+$font-size-18: var(--font-size-18);
+$font-size-24: var(--font-size-24);
+$font-size-26: var(--font-size-26);
+
+$sizes: (
+    xs: $font-size-16,
+    s: $font-size-18,
+    m: $font-size-24,
+    l: $font-size-26
+);
+
+@each $name, $size in $sizes {
+    .#{$name} {
+        font-size: $size;
+    }
+}
+
+.primary {
+    padding: 0.5rem 1rem;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: var(--background-grey-color);
+    }
+
+    &:disabled {
+        background-color: var(--middle-grey-color);
+        cursor: auto;
+
+        &:hover {
+            background-color: var(--middle-grey-color);
+            cursor: auto;
+        }
+    }
+}
+
+.secondary {
+    padding: 0.5rem 1rem;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: var(--middle-blue-color);
+    }
+
+    &:disabled {
+        background-color: var(--light-blue-color);
+        color: var(--black-color);
+        cursor: auto;
+
+        &:hover {
+            background-color: var(--light-blue-color);
+            color: var(--black-color);
+            cursor: auto;
+        }
+    }
+}

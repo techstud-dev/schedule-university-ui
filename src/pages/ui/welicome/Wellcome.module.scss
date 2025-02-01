@@ -1,0 +1,28 @@
+@use '@/app/styles/mixin' as mixin;
+
+.main {
+    @include mixin.section-style;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    height: 100vh;
+}
+
+.container > div {
+    flex: 1;
+}
+
+.container img {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
+.container h1 {
+    margin-bottom: 40px;
+}
