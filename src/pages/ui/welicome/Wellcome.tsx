@@ -1,9 +1,9 @@
 import main from "@/shared/assets/images/main.png";
 import { Text } from "@/shared/ui/text/Text";
 import { LinkCustom } from "@/shared/ui/linkCustom/LinkCustom";
-import m from "./WellcomePage.module.scss";
+import m from "./Wellcome.module.scss";
 
-function WellcomePage () {
+function Wellcome () {
     return (
         <main className={m.main}>
             <section className={m.container}>
@@ -22,4 +22,4 @@ function WellcomePage () {
     )
 };
 
-export default WellcomePage;
+export default Wellcome;

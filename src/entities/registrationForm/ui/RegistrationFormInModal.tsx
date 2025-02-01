@@ -1,7 +1,7 @@
-import { useModal } from "../../../shared/hooks/useModal";
-import { VisuallyHidden } from "../../../shared/ui/visuallyHidden/VisuallyHidden";
+import { useModal } from "@/shared/hooks/useModal";
+import { VisuallyHidden } from "@/shared/ui/visuallyHidden/VisuallyHidden";
 import { RegistrationForm } from "./RegistrationForm";
-import { getStyles } from '../../../shared/libs/getStyles';
+import { getStyles } from '@/shared/libs/getStyles';
 import r from "./RegistrationForm.module.css";
 
 export const RegistrationFormInModal = () => {
