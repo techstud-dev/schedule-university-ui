@@ -3,7 +3,7 @@ import { Text } from "@/shared/ui/text/Text";
 import { LinkCustom } from "@/shared/ui/linkCustom/LinkCustom";
 import m from "./WellcomePage.module.scss";
 
-const WellcomePage = () => {
+function WellcomePage () {
     return (
         <main className={m.main}>
             <section className={m.container}>
@@ -20,6 +20,6 @@ const WellcomePage = () => {
             </section>
         </main>
     )
-}
+};
 
-export default WellcomePage
+export default WellcomePage;
