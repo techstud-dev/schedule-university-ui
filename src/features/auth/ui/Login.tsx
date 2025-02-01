@@ -1,7 +1,7 @@
 import { useState } from "react";
-import LoginForm from "../../../pages/login/ui/LoginForm";
-import SignupForm from "../../../pages/login/ui/SignupForm";
-import l from "./Login.module.css";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
+import l from "./Login.module.scss";
 
 const Login = () => {
   const [viewMode, setViewMode] = useState("login");
@@ -14,7 +14,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={l.login}>
       <div className={l.login_button_wrapper}>
         <button className={l.nav_button} onClick={loginSwitch}>Войти</button>
         <button className={l.nav_button} onClick={signupSwitch}>Зарегистрироваться</button>

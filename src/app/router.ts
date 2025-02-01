@@ -1,7 +1,7 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
 // import Schedule from "../entities/schedule/ui/";
-import Login from "../features/auth/ui/LoginForm";
+import Login from "../features/auth/ui/Login";
 import Schedule from "@/entities/schedule/ui/Schedule";
 import { store } from "./store";
 import { authSlice } from "@/features/auth/model/auth.slice";

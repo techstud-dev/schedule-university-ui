@@ -5,7 +5,7 @@ import passHideIcon from "../../../shared/assets/icons/pass_hide.png";
 import passShowIcon from "../../../shared/assets/icons/pass_show.png";
 // import InputErrors from "../UI/InputErrors";
 
-const Login = () => {
+const LoginForm = () => {
   const email = useInput("", {
     isEmpty: true,
     isMinLengthError: 5,
@@ -82,4 +82,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

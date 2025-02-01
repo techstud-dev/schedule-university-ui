@@ -1,9 +1,17 @@
+.login {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: var(--border-radius-7);
+    box-shadow: var(--box-shadow-primary);
+}
+
 .login_container {
     max-width: 900px;
     /* width: 100%; */
     background-color: #f9f9f9;
-    border-radius: 15px;
-    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-15);
+    box-shadow: var(--box-shadow-secondary);
 }
 
 .login_button_wrapper {

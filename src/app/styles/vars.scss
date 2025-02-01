@@ -13,9 +13,13 @@
     --light-color: rgba(255, 255, 255, 0.1–0.2);
     --background-grey-color: #a3a3a3c2;
 
+    //shadow
+    --box-shadow-primary: 0 4px 10px 4px #13232f;
+    --box-shadow-secondary: 0 4px 40px rgba(0, 0, 0, 0.1);
+
 
     //fonts
-    --font-family: 'Inter';
+    
 
     //font-size
     --font-size-12: 12px;
@@ -36,9 +40,9 @@
 
 
     //border-radius
-    --border-radius-8: 8px;
+    --border-radius-7: 7px;
     --border-radius-12: 12px;
-    --border-radius-16: 16px;
+    --border-radius-15: 15px;
     --border-radius-24: 24px;
     --border-radius-50: 50px; //button, input
     --border-radius-date: 16px 16px 0px 0px; //news&blog
