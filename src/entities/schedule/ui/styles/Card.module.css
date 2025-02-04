@@ -1,9 +1,23 @@
 .card {
+  color: #000;
   max-width: 50%;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-bottom: 30px;
+  margin: 20px 0 20px 0;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.1s;
+}
+.card:hover {
+  background-color: #efefef;
+}
+
+.cardName {
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
 }
 
 .link {
@@ -17,10 +31,15 @@
 }
 
 .container {
+  margin-bottom: 20px;
+}
+.container:nth-last-child(1) {
+  margin: 0;
+}
+
+.lessonNameContainer {
   display: flex;
-  /* Используем Flexbox */
   justify-content: space-between;
-  /* Размещает элементы по краям */
   align-items: center;
   padding: 5px;
   width: 100%;

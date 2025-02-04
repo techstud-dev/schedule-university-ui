@@ -1,5 +1,5 @@
 import { useDate } from "@/shared/hooks/useDate";
-import m from "./Card.module.css";
+import m from "./styles/Card.module.css";
 import { Link } from "react-router-dom";
 import { setColor } from "../model/setColor";
 

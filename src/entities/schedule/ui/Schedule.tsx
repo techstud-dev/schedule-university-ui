@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "./Dashboard.module.css";
+import s from "./styles/Dashboard.module.css";
 import ScheduleService from "../model/ScheduleService";
 import { parity, useSchedule } from "@/shared/hooks/useSchedule";
 import Dashboard from "./Dashboard";
