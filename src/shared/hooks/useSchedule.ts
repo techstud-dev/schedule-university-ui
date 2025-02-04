@@ -84,4 +84,4 @@ export const useSchedule = (schedule: Lesson[], value: parity) => {
   }
 
   return Object.values(weekDays);
-};
+}; 

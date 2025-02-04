@@ -1,13 +1,10 @@
-import Loader from "@/shared/ui/loader/Loader";
 import d from "./Dashboard.module.scss";
 import DashboardItem from "./DashboardItem";
 import { weekDay } from "@/shared/hooks/useSchedule";
 
 type dayOfWeekEn = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
 
-export interface Dashboard extends Record<dayOfWeekEn, weekDay> {
-  isScheduleLoading: boolean;
-}
+export interface Dashboard extends Record<dayOfWeekEn, weekDay> {}
 
 const Dashboard = ({
   mon,
@@ -17,13 +14,8 @@ const Dashboard = ({
   fri,
   sat,
   sun,
-  isScheduleLoading,
 }: Dashboard) => {
   return (
-    <div className={d.container}>
-      {isScheduleLoading ? (
-        <Loader />
-      ) : (
         <>
           <div className={d.week}>
             <DashboardItem dayOfWeek={mon.dayOfWeek} date={mon.date} lessons={mon.lessons} />
@@ -35,8 +27,6 @@ const Dashboard = ({
             <DashboardItem dayOfWeek={sun.dayOfWeek} date={sun.date} lessons={sun.lessons} />
           </div>
         </>
-      )}
-    </div>
   );
 };
 

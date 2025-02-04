@@ -1,41 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import s from "./Dashboard.module.scss";
 import { parity, useSchedule } from "@/shared/hooks/useSchedule";
 import Dashboard from "./Dashboard";
 import ScheduleList from "./ScheduleList";
-import { useLazyGetEvenWeekSchedulesQuery, useLazyGetOddWeekSchedulesQuery } from "../api/scheduleAPI";
+import { useGetWeekSchedulesQuery } from "../api/scheduleAPI";
+import Loader from "@/shared/ui/loader/Loader";
 
 
 const Schedule = () => {
   const [viewMode, setViewMode] = useState("week");
   const [weekViewMode, setWeekViewMode] = useState<parity>("even");
-  const [schedule, setSchedule] = useState([]);
 
   const userDay = new Date().getDay();
-  
-  const lessonsData = useSchedule(schedule, weekViewMode);
 
-  const [fetchOddWeek, {isError: isOddError, isLoading: isOddLoading}] = useLazyGetOddWeekSchedulesQuery();
-  const [fetchEvenWeek, {isError: isEvenError, isLoading: isEventLoading}] = useLazyGetEvenWeekSchedulesQuery();
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [oddWeek, evenWeek] = await Promise.all([
-          fetchOddWeek().unwrap(),
-          fetchEvenWeek().unwrap(),
-        ]);
+  const { data: schedule, isLoading, isError } = useGetWeekSchedulesQuery();
 
-        setSchedule([...oddWeek, ...evenWeek]);
-      } catch (error) {
-        console.error("Ошибка загрузки расписания:", error);
-      }
-    };
+  if (isLoading) {
+    return <Loader />
+  }
 
-    fetchData();
-  }, []);
-
-  
+  const lessonsData = useSchedule(schedule ?? [], weekViewMode);
 
   const handleViewChange = (e) => {
     if (viewMode === "week") {
@@ -54,7 +38,7 @@ const Schedule = () => {
 
   return (
     <div className={s.wrapper}>
-      {(isOddError || isEvenError) && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
+      {(isError) && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
 
       <button className={s.toggleBtn} onClick={(e) => handleViewChange(e)}>
         {viewMode === "week" ? "Неделя" : "День"}
@@ -72,7 +56,6 @@ const Schedule = () => {
           fri={lessonsData[4]}
           sat={lessonsData[5]}
           sun={lessonsData[6]}
-          isScheduleLoading={isOddLoading || isEventLoading}
         />
       ) : (
         <ScheduleList
@@ -84,7 +67,6 @@ const Schedule = () => {
           sat={lessonsData[5]}
           sun={lessonsData[6]}
           userDay={userDay}
-          isScheduleLoading={isOddLoading || isEventLoading}
         />
       )}
     </div>

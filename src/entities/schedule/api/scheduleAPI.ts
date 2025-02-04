@@ -1,15 +1,14 @@
 import { baseAPI } from "@/shared/api/api";
+import { Lesson } from "@/shared/hooks/useSchedule";
 
 export const scheduleAPI = baseAPI.injectEndpoints({
   endpoints: (create) => ({
-    getOddWeekSchedules: create.query<unknown, void>({
-      query: () => '/oddWeekSchedules',
-    }),
-    getEvenWeekSchedules: create.query<unknown, void>({
-      query: () => '/evenWeekSchedules',
+    getWeekSchedules: create.query<Lesson[], void>({
+      query: () => '/schedule',
+      transformResponse: (response) => [...response.oddWeekSchedules, ...response.evenWeekSchedules]
     }),
   }),
   overrideExisting: true
 });
 
-export const { useLazyGetEvenWeekSchedulesQuery, useLazyGetOddWeekSchedulesQuery} = scheduleAPI;
+export const { useGetWeekSchedulesQuery } = scheduleAPI;
