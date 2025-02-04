@@ -1,5 +1,9 @@
-import Loader from "@/shared/ui/loader/Loader";
 import Card from "./Card";
+import { Dashboard } from "./Dashboard";
+
+interface ScheduleList extends Dashboard {
+  userDay: unknown
+}
 
 const ScheduleList = ({
   userDay,
@@ -10,15 +14,8 @@ const ScheduleList = ({
   fri,
   sat,
   sun,
-  isScheduleLoading,
-}) => {
+}: ScheduleList) => {
   return (
-    <div>
-      {isScheduleLoading ? (
-        <>
-          <Loader />
-        </>
-      ) : (
         <>
           <Card dayOfWeek={mon.dayOfWeek} date={mon.date} lessons={mon.lessons} />
           <Card dayOfWeek={tue.dayOfWeek} date={tue.date} lessons={tue.lessons} />
@@ -28,8 +25,6 @@ const ScheduleList = ({
           <Card dayOfWeek={sat.dayOfWeek} date={sat.date} lessons={sat.lessons} />
           <Card dayOfWeek={sun.dayOfWeek} date={sun.date} lessons={sun.lessons} />
         </>
-      )}
-    </div>
   );
 };
 

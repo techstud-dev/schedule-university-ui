@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Profile from "@/entities/profile/ui/Profile";
 import Logo from "@/shared/ui/logo/Logo";
-import n from "./Header.module.css";
+import n from "./Header.module.scss";
 import { useAppDispatch, useAppSelector } from "@/app/store";
 import { authSlice } from "@/features/auth/model/auth.slice";
 

@@ -1,31 +1,25 @@
-import { useEffect, useState } from "react";
-import s from "./Dashboard.module.css";
-import ScheduleService from "../model/ScheduleService";
+import { useState } from "react";
+import s from "./Dashboard.module.scss";
 import { parity, useSchedule } from "@/shared/hooks/useSchedule";
 import Dashboard from "./Dashboard";
-import { useFetching } from "@/shared/hooks/useFetching";
 import ScheduleList from "./ScheduleList";
+import { useGetWeekSchedulesQuery } from "../api/scheduleAPI";
+import Loader from "@/shared/ui/loader/Loader";
 
 
 const Schedule = () => {
   const [viewMode, setViewMode] = useState("week");
   const [weekViewMode, setWeekViewMode] = useState<parity>("even");
-  const [schedule, setSchedule] = useState([]);
 
   const userDay = new Date().getDay();
 
-  const lessonsData = useSchedule(schedule, weekViewMode);
+  const { data: schedule, isLoading, isError } = useGetWeekSchedulesQuery();
 
-  const [fetchSchedule, isScheduleLoading, scheduleError] = useFetching(
-    async () => {
-      const response = await ScheduleService.getDefaultSchedule();
-      setSchedule(response);
-    }
-  );
+  if (isLoading) {
+    return <Loader />
+  }
 
-  useEffect(() => {
-    fetchSchedule();
-  }, []);
+  const lessonsData = useSchedule(schedule ?? [], weekViewMode);
 
   const handleViewChange = (e) => {
     if (viewMode === "week") {
@@ -44,7 +38,7 @@ const Schedule = () => {
 
   return (
     <div className={s.wrapper}>
-      {scheduleError && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
+      {(isError) && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
 
       <button className={s.toggleBtn} onClick={(e) => handleViewChange(e)}>
         {viewMode === "week" ? "Неделя" : "День"}
@@ -62,7 +56,6 @@ const Schedule = () => {
           fri={lessonsData[4]}
           sat={lessonsData[5]}
           sun={lessonsData[6]}
-          isScheduleLoading={isScheduleLoading}
         />
       ) : (
         <ScheduleList
@@ -74,7 +67,6 @@ const Schedule = () => {
           sat={lessonsData[5]}
           sun={lessonsData[6]}
           userDay={userDay}
-          isScheduleLoading={isScheduleLoading}
         />
       )}
     </div>
