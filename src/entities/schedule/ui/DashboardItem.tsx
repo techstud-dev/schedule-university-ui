@@ -1,7 +1,7 @@
 import { useDate } from "@/shared/hooks/useDate";
 import d from "./styles/Dashboard.module.css";
 
-const DashboardItem = ({ dayOfWeek, date, lessons }) => {
+const DashboardItem = ({ dayOfWeek, date, lessons }: newSchedule) => {
   let counter = 1;
   const lessonDate = useDate(date) 
 

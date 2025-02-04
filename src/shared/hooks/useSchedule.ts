@@ -1,6 +1,10 @@
-interface Lesson {
+type dayOfWeek = 'Понедельник' | 'Вторник' | 'Среда' | 'Четверг' | 'Пятница' | 'Суббота' | 'Воскресенье';
+type dayOfWeekShort = 'Пн' | 'Вт' | 'Ср' | 'Чт' | 'Пт' | 'Сб' | 'Вс';
+
+
+export interface Lesson {
   id: string;
-  dayOfWeek: string;
+  dayOfWeek: dayOfWeek;
   date: number;
   time: string;
   type: string;
@@ -12,19 +16,27 @@ interface Lesson {
   _links: object;
 }
 
+export type weekDay = { dayOfWeek: dayOfWeekShort, date: number, lessons: Lesson[] }
+
+export type newSchedule = {
+  dayOfWeek: dayOfWeekShort;
+  date: number;
+  lessons: Lesson[];
+}
+
 export type parity = "even" | "odd";
 
 export const useSchedule = (schedule: Lesson[], value: parity) => {
   const newSchedule: Lesson[] = [];
 
-  const weekDays = {
-    monday: { dayOfWeek: "Пн", date: 0, lessons: [] as Lesson[] },
-    tuesday: { dayOfWeek: "Вт", date: 0, lessons: [] as Lesson[] },
-    wednesday: { dayOfWeek: "Ср", date: 0, lessons: [] as Lesson[] },
-    thursday: { dayOfWeek: "Чт", date: 0, lessons: [] as Lesson[] },
-    friday: { dayOfWeek: "Пт", date: 0, lessons: [] as Lesson[] },
-    saturday: { dayOfWeek: "Сб", date: 0, lessons: [] as Lesson[] },
-    sunday: { dayOfWeek: "Вс", date: 0, lessons: [] as Lesson[] },
+  const weekDays: Record<string, weekDay> = {
+    monday: { dayOfWeek: "Пн", date: 0, lessons: [] },
+    tuesday: { dayOfWeek: "Вт", date: 0, lessons: [] },
+    wednesday: { dayOfWeek: "Ср", date: 0, lessons: [] },
+    thursday: { dayOfWeek: "Чт", date: 0, lessons: [] },
+    friday: { dayOfWeek: "Пт", date: 0, lessons: [] },
+    saturday: { dayOfWeek: "Сб", date: 0, lessons: [] },
+    sunday: { dayOfWeek: "Вс", date: 0, lessons: [] },
   };
 
   for (let i = 0; i < schedule.length; i++) {
@@ -72,4 +84,4 @@ export const useSchedule = (schedule: Lesson[], value: parity) => {
   }
 
   return Object.values(weekDays);
-};
+}; 

@@ -2,8 +2,9 @@ import { useDate } from "@/shared/hooks/useDate";
 import m from "./styles/Card.module.css";
 import { Link } from "react-router-dom";
 import { setColor } from "../model/setColor";
+import { newSchedule, Lesson } from "@/shared/hooks/useSchedule";
 
-const ScheduleCard = ({ dayOfWeek, date, lessons }) => {
+const ScheduleCard = ({ dayOfWeek, date, lessons }: newSchedule) => {
   const lessonDate = useDate(date) 
 
   if (Array.isArray(lessons) && lessons.length === 0) {
@@ -26,7 +27,7 @@ const ScheduleCard = ({ dayOfWeek, date, lessons }) => {
   return (
     <div className={m.card}>
       <h4 className={m.cardName}>{dayOfWeek} - {lessonDate}</h4>
-      {lessons.map((lesson) => {
+      {lessons.map((lesson: Lesson) => {
         const backColor = setColor(lesson.type);
         const circleColor = setColor(lesson.type);
 

@@ -1,0 +1,137 @@
+
+/* Стилизация выпадающего списка */
+.custom_select {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+}
+
+.custom_select select {
+  display: none; 
+}
+
+.custom_select:before {
+  content: attr(data-label);
+  display: block;
+  background-color: #f9f9f9;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  min-height: 10px; /* Минимальная высота для улучшения внешнего вида */
+  background-image: url('data:image/png;base64,...'); /* Ваше изображение стрелки вниз */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.1s;
+  position: relative;
+}
+
+.custom_select:hover:before {
+  background-color: #efefef;
+}
+
+.custom_select .select_items {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  z-index: 99;
+  display: none; /* Скрыто по умолчанию */
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom_select:hover .select_items {
+  display: block; /* Показываем при наведении */
+}
+
+.custom_select .select_items div {
+  padding: 10px; 
+  cursor: pointer; 
+  transition: background 0.2s;
+}
+
+.custom_select .select_items div:hover {
+  background-color: #f1f1f1; /* Цвет фона при наведении */
+}
+
+
+/* Стилизация дашборда */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.day {
+  min-height: 150px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  width: calc(100% / 7 - 10px);
+  padding: 15px;
+  margin: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.1s;
+}
+
+.day:hover {
+  background-color: #efefef;
+}
+
+.day_name {
+  border-bottom: 1px solid #efefef;
+  text-align: center;
+  padding-bottom: 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #333;
+}
+
+.task_list {
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+  padding: 5px 0;
+  color: #666;
+}
+
+.task_item:hover {
+  cursor: default;
+  border-bottom: 1px solid #A3A3A3;
+}
+
+.toggleBtn {
+  min-width: 100px;
+  /*  */
+  border: 1px solid #e0e0e0;
+  color: #fff; 
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.1s, transform 0.2s;
+}
+
+.toggleBtn:hover {
+  background-color: #efefef;
+  color: #333;
+}
+
+.toggleBtn:active {
+  transform: scale(0.95);
+}
