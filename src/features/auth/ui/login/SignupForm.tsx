@@ -3,6 +3,8 @@ import { useInput } from "@/shared/hooks/useInput";
 import passHideIcon from "@/shared/assets/icons/pass_hide.png";
 import passShowIcon from "@/shared/assets/icons/pass_show.png";
 import l from "./Login.module.scss";
+import { ButtonCustom } from "@/shared/ui/buttonCustom/ButtonCustom";
+import { Stack } from "@/shared/ui/stack/Stack";
 
 const SignupForm = () => {
   const vuzs = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
@@ -27,7 +29,7 @@ const SignupForm = () => {
   return (
     <div className={l.login_container}>
       <form className={l.login_form}>
-        <div className={l.input_group}>
+        <Stack className={l.input_group} align={"alignCenter"}>
           <input
             className={l.login_input}
             //   value={email.value}
@@ -60,7 +62,7 @@ const SignupForm = () => {
             name={"surname"}
             placeholder={"Введите своё отчество (если есть)"}
           />
-        </div>
+        </Stack>
 
         <input
           className={l.login_input}
@@ -94,7 +96,7 @@ const SignupForm = () => {
         {email.isDirty && email.isError && (
           <div className={l.error_message}>Некорректный email</div>
         )}
-        <div className={l.input_group}>
+        <Stack className={l.input_group} align={'alignCenter'}>
           <input
             className={l.login_input}
             value={email.value}
@@ -112,7 +114,7 @@ const SignupForm = () => {
             name={"phone"}
             placeholder={"Введите свой номер телефона"}
           />
-        </div>
+        </Stack>
         {password.isDirty && password.isEmpty && (
           <div className={l.error_message}>Поле не может быть пустым</div>
         )}
@@ -122,15 +124,14 @@ const SignupForm = () => {
         {password.isDirty && password.isMaxLengthError && (
           <div className={l.error_message}>Слишком длинный пароль</div>
         )}
-        <div className={l.password_container}>
+        <Stack align={'alignCenter'} justify={'justifyCenter'}>
           <input
             className={l.login_input}
             type={isPasswordVisible ? "text" : "password"} // Условие для смены типа
             placeholder="Пароль"
             {...password}
           />
-          <button
-            type="button"
+          <ButtonCustom
             className={l.toggle_password}
             onClick={togglePasswordVisibility}
           >
@@ -139,15 +140,15 @@ const SignupForm = () => {
             ) : (
               <img src={passHideIcon} />
             )}
-          </button>
-        </div>
+          </ButtonCustom>
+        </Stack>
 
-        <button
+        <ButtonCustom
           className={l.login_button}
           disabled={!email.isInputValid || !password.isInputValid}
         >
           Зарегистрироваться
-        </button>
+        </ButtonCustom>
       </form>
     </div>
   );

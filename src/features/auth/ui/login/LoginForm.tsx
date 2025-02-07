@@ -3,6 +3,8 @@ import { useInput } from "@/shared/hooks/useInput";
 import l from "./Login.module.scss";
 import passHideIcon from "@/shared/assets/icons/pass_hide.png";
 import passShowIcon from "@/shared/assets/icons/pass_show.png";
+import { Stack } from "@/shared/ui/stack/Stack";
+import { ButtonCustom } from "@/shared/ui/buttonCustom/ButtonCustom";
 // import InputErrors from "../UI/InputErrors";
 
 const LoginForm = () => {
@@ -52,31 +54,31 @@ const LoginForm = () => {
         {password.isDirty && password.isMaxLengthError && (
           <div className={l.error_message}>Слишком длинный пароль</div>
         )}
-        <div className={l.password_container}>
+        <Stack justify={'justifyCenter'} align={"alignCenter"}>
           <input
             className={l.login_input}
             type={isPasswordVisible ? "text" : "password"} // Условие для смены типа
             placeholder="Пароль"
             {...password}
           />
-          <button
-            type="button"
+          <ButtonCustom
             className={l.toggle_password}
             onClick={togglePassVisibility}
+            color={"transparent"}
           >
             {isPasswordVisible ? (
               <img src={passShowIcon} />
             ) : (
               <img src={passHideIcon} />
             )}
-          </button>
-        </div>
-        <button
+          </ButtonCustom>
+        </Stack>
+        <ButtonCustom
           className={l.login_button}
           disabled={!email.isInputValid || !password.isInputValid}
         >
           Войти
-        </button>
+        </ButtonCustom>
       </form>
     </div>
   );

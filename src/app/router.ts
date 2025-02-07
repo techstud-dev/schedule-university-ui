@@ -1,11 +1,11 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
 // import Schedule from "../entities/schedule/ui/";
-import Login from "@/pages/ui/login/ui/Login";
+import Login from "@/pages/ui/login/Login";
 import Schedule from "@/entities/schedule/ui/Schedule";
 import { store } from "./store";
 import { authSlice } from "@/features/auth/model/auth.slice";
-import Wellcome from "@/pages/ui/welicome/Wellcome";
+import Welcome from "@/pages/ui/welcome/Welcome";
 
 const isAuthenticated = () => {
   // Пример проверки авторизации
@@ -42,8 +42,8 @@ export const router = createBrowserRouter([
         Component: Login
       },
       {
-        path: '/wellcome',
-        Component: Wellcome
+        path: '/welcome',
+        Component: Welcome
       }
     ]
   }

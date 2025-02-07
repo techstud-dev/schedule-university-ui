@@ -1,0 +1,23 @@
+.login {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: var(--border-radius-s);
+    box-shadow: var(--box-shadow-primary);
+}
+
+.login_button_wrapper {
+    margin-bottom: 20px;
+}
+
+.nav_button {
+    margin-right: 10px;
+    padding: 12px;
+}
+
+.login_title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--black-color);
+}
