@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import s from "./styles/Dashboard.module.css";
+import s from "./styles/ScheduleMain.module.css";
 import ScheduleService from "../../API/ScheduleService";
 import { useSchedule } from "../../hooks/useSchedule";
 import Dashboard from "./DashboardComponenst/Dashboard";
 import { useFetching } from "../../hooks/useFetching";
 import ScheduleList from "./CardsComponents/ScheduleList";
+import Homework from "./HomeworkComponents/Homework";
 // import { useDate } from "../../hooks/useDate";
 // import lesson from "../../redux/redux_store";
 
@@ -69,17 +70,20 @@ const ScheduleMain = () => {
           isScheduleLoading={isScheduleLoading}
         />
       ) : (
-        <ScheduleList
-          mon={lessonsData[0]}
-          tue={lessonsData[1]}
-          wed={lessonsData[2]}
-          thu={lessonsData[3]}
-          fri={lessonsData[4]}
-          sat={lessonsData[5]}
-          sun={lessonsData[6]}
-          userDay={userDay}
-          isScheduleLoading={isScheduleLoading}
-        />
+        <div className={s.cardContainer}>
+          <ScheduleList
+            mon={lessonsData[0]}
+            tue={lessonsData[1]}
+            wed={lessonsData[2]}
+            thu={lessonsData[3]}
+            fri={lessonsData[4]}
+            sat={lessonsData[5]}
+            sun={lessonsData[6]}
+            userDay={userDay}
+            isScheduleLoading={isScheduleLoading}
+          />
+          <Homework />
+        </div>
       )}
     </div>
   );

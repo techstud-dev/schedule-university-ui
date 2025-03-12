@@ -1,12 +1,53 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useInput } from "../../hooks/useInput";
 import { Input } from "../UI/Input";
 import l from "./styles/Login.module.css";
 import passHideIcon from "../../assets/icons/pass_hide.png";
 import passShowIcon from "../../assets/icons/pass_show.png";
+import { signUp } from "../../Server Emulator/auth";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
+import AuthService from "../../API/AuthService";
 
 const SignUp = () => {
-  const vuzs = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
+  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const universities = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
+
+  const [user, setUser] = useState({
+    username: "",
+    firstname: "",
+    surname: "",
+    middlename: "",
+    university: "",
+    group: "",
+    email: "",
+    phone: "",
+    password: "",
+    token: 123
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+      token: 123,
+    }));
+  };
+  
+  const signUp = (event) => {
+    event.preventDefault();
+    setIsAuth(true);
+    localStorage.setItem("auth", JSON.stringify(user));
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    AuthService.register(user);
+
+    // signUp(user);
+  };
+
 
   const email = useInput("", {
     isEmpty: true,
@@ -27,38 +68,38 @@ const SignUp = () => {
 
   return (
     <div className={l.login_container}>
-      <form className={l.login_form}>
+      <form className={l.login_form} onSubmit={submitForm}>
         <div className={l.input_group}>
           <input
             className={l.login_input}
-            //   value={email.value}
-            //   onChange={(e) => email.onChange(e)}
+            name="username"
+            value={user.username}
+            onChange={handleInputChange}
             //   onBlur={(e) => email.onBlur(e)}
-            name={"username"}
             placeholder={"Введите никнейм"}
           />
           <input
             className={l.login_input}
-            //   value={email.value}
-            //   onChange={(e) => email.onChange(e)}
+            name="firstname"
+            value={user.firstname}
+            onChange={handleInputChange}
             //   onBlur={(e) => email.onBlur(e)}
-            name={"name"}
             placeholder={"Введите своё имя"}
           />
           <input
             className={l.login_input}
-            //   value={email.value}
-            //   onChange={(e) => email.onChange(e)}
+            name="surname"
+            value={user.surname}
+            onChange={handleInputChange}
             //   onBlur={(e) => email.onBlur(e)}
-            name={"surname"}
             placeholder={"Введите свою фамилию"}
           />
           <input
             className={l.login_input}
-            //   value={email.value}
-            //   onChange={(e) => email.onChange(e)}
+            name="middlename"
+            value={user.middlename}
+            onChange={handleInputChange}
             //   onBlur={(e) => email.onBlur(e)}
-            name={"surname"}
             placeholder={"Введите своё отчество (если есть)"}
           />
         </div>
@@ -73,16 +114,16 @@ const SignUp = () => {
           <option value="" disabled selected>
             Другое
           </option>
-          {vuzs.map((vuz) => (
+          {universities.map((vuz) => (
             <option>{vuz}</option>
           ))}
         </datalist>
         <input
           className={l.login_input}
-          //   value={email.value}
-          //   onChange={(e) => email.onChange(e)}
+          name={"group"}
+          value={user.group}
+          onChange={handleInputChange}
           //   onBlur={(e) => email.onBlur(e)}
-          name={"text"}
           placeholder={"Введите номер группы"}
         />
 
@@ -98,19 +139,19 @@ const SignUp = () => {
         <div className={l.input_group}>
           <input
             className={l.login_input}
-            value={email.value}
-            onChange={(e) => email.onChange(e)}
+            name="email"
+            value={user.email}
+            onChange={handleInputChange}
             onBlur={(e) => email.onBlur(e)}
-            name={"email"}
             placeholder={"Электронная почта"}
           />
           <input
             className={l.login_input}
-            //   value={email.value}
-            //   onChange={(e) => email.onChange(e)}
+            name="phone"
+            value={user.phone}
+            onChange={handleInputChange}
             //   onBlur={(e) => email.onBlur(e)}
             type="tel"
-            name={"phone"}
             placeholder={"Введите свой номер телефона"}
           />
         </div>
@@ -125,10 +166,13 @@ const SignUp = () => {
         )}
         <div className={l.password_container}>
           <input
+            name="password"
+            value={user.password}
+            onChange={handleInputChange}
             className={l.login_input}
             type={isPasswordVisible ? "text" : "password"} // Условие для смены типа
             placeholder="Пароль"
-            {...password}
+            // {...password}
           />
           <button
             type="button"
@@ -143,12 +187,15 @@ const SignUp = () => {
           </button>
         </div>
 
-        <button
-          className={l.login_button}
-          disabled={!email.isInputValid || !password.isInputValid}
-        >
-          Зарегистрироваться
-        </button>
+        <Link to={"/schedule"}>
+          <button
+            className={l.login_button}
+            onClick={signUp}
+            // disabled={!email.isInputValid || !password.isInputValid}
+          >
+            Зарегистрироваться
+          </button>
+        </Link>
       </form>
     </div>
   );

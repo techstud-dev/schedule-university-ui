@@ -29,7 +29,7 @@ function Navbar() {
               Почему мы?
             </Link>
             <button onClick={login} className={n.button}>
-              <Link to={"/login"}>Войти</Link>
+              <Link to={"/schedule"}>Войти</Link>
             </button>
           </>
         )}

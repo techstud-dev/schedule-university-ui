@@ -109,27 +109,3 @@
     cursor: default;
     border-bottom: 1px solid #A3A3A3;
 }
-
-.toggleBtn {
-    min-width: 100px;
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    color: white; 
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.1s, transform 0.2s;
-}
-
-.toggleBtn:hover {
-    background-color: #efefef;
-}
-
-.toggleBtn:active {
-    transform: scale(0.95);
-}
