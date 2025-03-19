@@ -13,7 +13,7 @@ function AppRouter() {
     }
 
   return (
-    <div>
+    <>
       {!isAuth ? (
         <Routes>
           {publicRoutes.map((route) => (
@@ -37,7 +37,7 @@ function AppRouter() {
           <Route path="/*" element={<Navigate to="/schedule" replace />} />
         </Routes>
       )}
-    </div>
+    </>
   );
 }
 

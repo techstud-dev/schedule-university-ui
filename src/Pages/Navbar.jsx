@@ -14,10 +14,12 @@ function Navbar() {
     localStorage.setItem("auth", "token123");
   };
 
+  let menu = false
+
   return (
     <nav className={n.navbar}>
       <Logo />
-      <div className={n.menu}>
+      {menu && <div className={n.menu}>
         {isAuth ? (
           <>
             <NavbarLinks />
@@ -33,7 +35,7 @@ function Navbar() {
             </button>
           </>
         )}
-      </div>
+      </div>}
     </nav>
   );
 }

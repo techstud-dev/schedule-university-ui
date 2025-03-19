@@ -19,15 +19,12 @@ function App() {
   return (
     <div className="App">
       <AuthContext.Provider value={{ isAuth, setIsAuth, isLoading }}>
-        <div className="header">
+        <header className="header">
           <Navbar />
-        </div>
-        <div className="content">
+        </header>
+        <main className="content">
           <AppRouter />
-        </div>
-        <div className="footer">
-          <Footer />
-        </div>
+        </main>
       </AuthContext.Provider>
     </div>
   );
