@@ -1,3 +1,9 @@
+import google from '../../../assets/images/Google_Calendar.png';
+import apple from '../../../assets/images/Apple_Calendar.png';
+import vk from '../../../assets/icons/VK_card.svg';
+import telegram from '../../../assets/icons/telegram.svg';
+
+
 const man = () => {
     return (
         <svg width="37" height="41" viewBox="0 0 37 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,27 +53,56 @@ export const data = [
         img: man(),
         title: 'Домашка',
         description: 'Просматривай и делись домашкой с друзьями.',
-        path: '/', //TODO
-        link: 'Schedule Homework',
+        link: {
+            path: '/', //TODO
+            title: 'Schedule Homework',
+        }
+        
     },
     {
         id: 2,
         img: schedule(),
         title: 'Расписание',
         description: 'Быстро и просто узнавай о расписании.',
-        path: '/', //TODO
-        link: 'Оцени сам',
+        link: {
+            path: '/', //TODO
+            title: 'Оцени сам',
+        }
     },
     {
         id: 3,
         img: puzzle(),
         title: 'Интеграции',
         description: 'Удобная интеграция с популярными календарями.',
+        links: [
+            {
+                path: '/', //TODO
+                img: google,
+                alt: 'Гугл календарь',
+            },
+            {
+                path: '/', //TODO
+                img: apple,
+                alt: 'Эпл календарь'
+            }
+        ]
     },
     {
         id: 4,
         img: bot(),
         title: 'Боты',
         description: 'Отслеживание изменений и нотификации через ботов.',
+        links: [
+            {
+                path: '/', //TODO
+                img: vk,
+                alt: 'vk'
+            },
+            {
+                path: '/', //TODO
+                img: telegram,
+                alt: 'телеграм'
+            }
+        ]
     }
 ]

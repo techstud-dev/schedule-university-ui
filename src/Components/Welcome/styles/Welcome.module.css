@@ -69,3 +69,9 @@
     width: 25px;
     height: 25px;
 }
+
+.list_card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

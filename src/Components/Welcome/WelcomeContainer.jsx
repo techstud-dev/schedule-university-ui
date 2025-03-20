@@ -17,7 +17,7 @@ const WelcomeContainer = () => {
                 {arrow()}
             </LinkCustom>
             <ul className={w.list}>
-                {data.map(({id, img, title, description, path, link}) => <WelcomeCard key = {id} img={img} title={title} description={description} path={path} link={link}/>)}
+                {data.map(({id, img, title, description, link, links}) => <WelcomeCard key = {id} img={img} title={title} description={description} links={links} link={link}/>)}
             </ul>
         </div>
     )

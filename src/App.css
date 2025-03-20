@@ -14,6 +14,10 @@ img {
     display: block;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .App {
     display: flex;
     flex-direction: column;
