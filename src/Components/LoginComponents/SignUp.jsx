@@ -74,7 +74,7 @@ const SignUp = () => {
             <p className={l.error_message}>{errors.password?.message}</p>
             <label>
               <input type="checkbox" id="customCheckbox" checked={isChecked} onChange={handleCheckboxChange}/>
-              <span class={l.custom_checkbox}></span>
+              <span className={l.custom_checkbox}></span>
               Запомнить пароль
           </label>
           </div>

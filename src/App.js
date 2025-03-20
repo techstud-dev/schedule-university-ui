@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Footer from "./Pages/Footer";
 import Navbar from "./Pages/Navbar";
 import AppRouter from "./routes/AppRouter";
 import { AuthContext } from "./Context/AuthContext";

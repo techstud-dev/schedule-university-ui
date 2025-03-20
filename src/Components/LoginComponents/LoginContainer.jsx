@@ -6,9 +6,11 @@ import LinkAuth from "./LinkAuth";
 import yandex from "../../assets/icons/yandex.svg";
 import vk from "../../assets/icons/vk.svg";
 import l from "./styles/Login.module.css";
+import { useSelector } from "react-redux";
 
 const LoginContainer = () => {
-  const [login, setLogin] = useState(true);
+  const registration = useSelector((state) => state.login.login);
+  const [login, setLogin] = useState(registration);
 
   return (
     <section className={l.container}>

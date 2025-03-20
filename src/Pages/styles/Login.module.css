@@ -4,6 +4,7 @@
 
 .login {
     width: 100%;
+    max-width: 1680px;
     display: grid;
     grid-template-columns: minmax(600px, 1fr) minmax(50%, 1088px);
     gap: 40px;
