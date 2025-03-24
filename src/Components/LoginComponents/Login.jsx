@@ -1,16 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import { useInput } from "../../hooks/useInput";
-import { Input } from "../UI/Input";
+import { useState } from "react";
 import l from "./styles/Login.module.css";
 import passHideIcon from "../../assets/icons/pass_hide.png";
 import passShowIcon from "../../assets/icons/pass_show.png";
-import InputErrors from "../UI/InputErrors";
-import { AuthContext } from "../../Context/AuthContext";
 import { authenticate } from "../../API/AuthService";
-import { Link } from "react-router-dom";
+import { useDispatch} from "react-redux";
+import { authSlice } from "../../app/auth.slice";
 
 const Login = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +32,7 @@ const Login = () => {
     console.log(result);
 
     if (result.success) {
-      setIsAuth(true);
+      dispatch(authSlice.actions.setIsAuth(true))
       localStorage.setItem("auth", JSON.stringify(result.user));
     }
   };

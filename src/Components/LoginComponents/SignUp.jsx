@@ -1,16 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { useInput } from "../../hooks/useInput";
-import { Input } from "../UI/Input";
 import l from "./styles/Login.module.css";
 import passHideIcon from "../../assets/icons/pass_hide.png";
 import passShowIcon from "../../assets/icons/pass_show.png";
-import { signUp } from "../../Server Emulator/auth";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthContext";
-import AuthService from "../../API/AuthService";
+import { useDispatch } from "react-redux";
+import { authSlice } from "../../app/auth.slice";
+import { useRegisterMutation } from "../../app/authApi";
 
 const SignUp = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const [register, { data, error, isLoading }] = useRegisterMutation();
+
   const universities = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
 
   const [user, setUser] = useState({
@@ -37,15 +38,20 @@ const SignUp = () => {
   
   const signUp = (event) => {
     event.preventDefault();
-    setIsAuth(true);
-    localStorage.setItem("auth", JSON.stringify(user));
+    
   };
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    AuthService.register(user);
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   AuthService.register(user);
 
-    // signUp(user);
+  //   // signUp(user);
+  // };
+
+  const handleRegister = async () => {
+    await register(user);
+    dispatch(authSlice.actions.setIsAuth(true))
+    localStorage.setItem("auth", JSON.stringify(user));
   };
 
 
@@ -68,7 +74,7 @@ const SignUp = () => {
 
   return (
     <div className={l.login_container}>
-      <form className={l.login_form} onSubmit={submitForm}>
+      <form className={l.login_form}>
         <div className={l.input_group}>
           <input
             className={l.login_input}
@@ -170,6 +176,7 @@ const SignUp = () => {
             value={user.password}
             onChange={handleInputChange}
             className={l.login_input}
+            autoComplete="new-password"
             type={isPasswordVisible ? "text" : "password"} // Условие для смены типа
             placeholder="Пароль"
             // {...password}
@@ -190,7 +197,7 @@ const SignUp = () => {
         <Link to={"/schedule"}>
           <button
             className={l.login_button}
-            onClick={signUp}
+            onClick={handleRegister}
             // disabled={!email.isInputValid || !password.isInputValid}
           >
             Зарегистрироваться

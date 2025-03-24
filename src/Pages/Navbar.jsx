@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import ProfileElement from "../Components/NavbarComponents/ProfileElement.jsx";
 import Logo from "../Components/NavbarComponents/Logo.jsx";
 import n from "./styles/Navbar.module.css";
-import { useContext } from "react";
-import { AuthContext } from "../Context/AuthContext.js";
 import NavbarLinks from "../Components/NavbarComponents/NavbarLinks.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { authSlice } from "../app/auth.slice.js";
 
 function Navbar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  const isAuth = useSelector(state => authSlice.selectors.selectIsAuth(state));
 
   const login = (e) => {
-    setIsAuth(true);
+    dispatch(authSlice.actions.setIsAuth(true))
     localStorage.setItem("auth", "token123");
   };
 
