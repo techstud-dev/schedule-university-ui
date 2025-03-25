@@ -6,7 +6,7 @@ import WelcomeCard from './WelcomeCard';
 
 const WelcomeContainer = () => {
     return (
-        <div className={w.container}>
+        <div className={w.wrapper}>
             <h1 className={w.title}>
                 Добавь свой ВУЗ,
                 Отслеживай расписание удобно!

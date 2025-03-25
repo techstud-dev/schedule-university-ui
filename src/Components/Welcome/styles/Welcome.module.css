@@ -7,7 +7,12 @@
     margin: 75px auto 90px;
 }
 
-.container > p {
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.wrapper > p {
     color: #F5F5F5;
     font-size: 32px;
     max-width: 965px;

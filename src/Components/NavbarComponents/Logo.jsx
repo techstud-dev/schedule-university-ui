@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import { getStyles } from "../../utils/getStyles";
+import logo from '../../assets/images/logo.png';
 import l from "./NavbarComponents.module.css";
-import logo from '../../assets/images/logo.png'
 
-const Logo = () => {
+const Logo = ({className}) => {
+  const additional = [
+    className,
+  ]
+
     return (
-      <Link to="/" className={l.logoLink}>
+      <Link to="/welcome" className={getStyles(l.logoLink, {} , additional)}>
         <img className={l.logo} src={logo} alt="logo" width={'275'} height={'40'}/>
       </Link>
     );

@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { arrow } from "../../utils/arrow";
 import { LinkCustom } from "../UI/LinkCustom";
-import w from "./styles/Welcome.module.css";
 import { VisuallyHidden } from "../UI/VisuallyHidden";
+import w from "./styles/Welcome.module.css";
 
 const WelcomeCard = ({img, title, description, link, links}) => {
     return (
@@ -19,10 +18,8 @@ const WelcomeCard = ({img, title, description, link, links}) => {
             <ul className={w.list_card}>
             {links && links.map((link, id) => 
                 <li>
-                    <Link key={id} to={link.path} className={w.link_item}>
-                        <img src={link.img} alt={link.alt} />
-                        <VisuallyHidden>{link.alt}</VisuallyHidden>
-                    </Link>
+                    <img key={id} src={link.img} alt={link.alt} />
+                    <VisuallyHidden>{link.alt}</VisuallyHidden>
                 </li>
                 )}
             </ul>

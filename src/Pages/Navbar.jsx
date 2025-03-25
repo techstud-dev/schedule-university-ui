@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <nav className={n.navbar}>
-      <Logo />
+      <Logo className={welcome? n.welcome_logo : ''} />
       {menu && <div className={n.menu}>
         {isAuth ? (
           <>

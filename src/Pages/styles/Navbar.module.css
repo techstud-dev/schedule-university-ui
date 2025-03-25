@@ -35,3 +35,7 @@
     min-width: 175px;
     justify-content: center;
 }
+
+.welcome_logo {
+    cursor: default;
+}
