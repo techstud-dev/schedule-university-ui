@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import p from "./NavbarComponents.module.css";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import profileIcon from "../../assets/icons/profile.png";
-import { AuthContext } from "../../Context/AuthContext";
+import { useDispatch } from "react-redux";
+import { authSlice } from "../../app/auth.slice";
 
 const ProfileElement = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,7 +15,7 @@ const ProfileElement = () => {
   };
 
   const logout = (e) => {
-    setIsAuth(false);
+    dispatch(authSlice.actions.setIsAuth(false))
     localStorage.removeItem("auth");
   };
 

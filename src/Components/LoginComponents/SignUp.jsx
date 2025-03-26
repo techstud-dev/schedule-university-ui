@@ -5,6 +5,10 @@ import passHideIcon from "../../assets/icons/pass_hide.svg";
 import passShowIcon from "../../assets/icons/pass_show.svg";
 import { ButtonCustom } from "../UI/ButtonCustom";
 import l from "./styles/Login.module.css";
+import { useInput } from "../../hooks/useInput";
+import { useDispatch } from "react-redux";
+import { authSlice } from "../../app/auth.slice";
+import { useRegisterMutation } from "../../app/authApi";
 
 const SignUp = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -13,13 +17,61 @@ const SignUp = () => {
 };
   const navigate = useNavigate();
   const {
-    register,
+    registerForm,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     mode: 'onBlur',
+  })
+
+  const dispatch = useDispatch();
+  const [register, { data, error, isLoading }] = useRegisterMutation();
+
+  const universities = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
+
+  const [user, setUser] = useState({
+    username: "",
+    firstname: "",
+    surname: "",
+    middlename: "",
+    university: "",
+    group: "",
+    email: "",
+    phone: "",
+    password: "",
+    token: 123
   });
   
+  const signUp = (event) => {
+    event.preventDefault();
+    
+  };
+
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   AuthService.register(user);
+
+  //   // signUp(user);
+  // };
+
+  const handleRegister = async () => {
+    await register(user);
+    dispatch(authSlice.actions.setIsAuth(true))
+    localStorage.setItem("auth", JSON.stringify(user));
+  };
+
+
+  const email = useInput("", {
+    isEmpty: true,
+    isMinLengthError: 5,
+    isEmail: false,
+  });
+  const password = useInput("", {
+    isEmpty: true,
+    isMinLengthError: 6,
+    isMaxLengthError: 15,
+  });
+
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const togglePassVisibility = () => {

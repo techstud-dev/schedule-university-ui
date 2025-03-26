@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes } from "react-router";
 import { privateRoutes, publicRoutes } from "./main";
-import { useContext } from "react";
-import { AuthContext } from "../Context/AuthContext";
+import { useSelector } from "react-redux";
+import { authSlice } from "../app/auth.slice";
 
 function AppRouter() {
-  const { isAuth, isLoading } = useContext(AuthContext);
+
+  const isAuth = useSelector(state => authSlice.selectors.selectIsAuth(state));
+  const isLoading = useSelector(state => authSlice.selectors.selectIsLoading(state));
 
     if (isLoading) {
       return (

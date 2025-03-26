@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../Context/AuthContext";
+import { useDispatch } from "react-redux";
+import { authSlice } from "../app/auth.slice";
 
 export const signUp = (user) => {
   console.log(user);
@@ -29,7 +29,7 @@ export const signUp = (user) => {
 };
 
 export const useLogIn = (user) => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const studentData = localStorage.getItem("student");
   const student = JSON.parse(studentData);
@@ -38,7 +38,7 @@ export const useLogIn = (user) => {
     student.email === user.email &&
     student.password === user.password
   ) {
-    setIsAuth(true);
+    dispatch(authSlice.actions.setIsAuth(true))
     localStorage.setItem("auth", JSON.stringify(student));
   }
 };
