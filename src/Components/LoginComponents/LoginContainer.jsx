@@ -1,29 +1,26 @@
 import { useState } from "react";
-import Login from "./Login";
+import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import LoginTitle from "./LoginTitle";
+import LinkAuth from "./LinkAuth";
+import yandex from "../../assets/icons/yandex.svg";
+import vk from "../../assets/icons/vk.svg";
 import l from "./styles/Login.module.css";
 
 const LoginContainer = () => {
-  const [viewMode, setViewMode] = useState("login");
-
-  const loginSwitch = () => {
-      setViewMode("login");
-  };
-  const signupSwitch = () => {
-      setViewMode("signup");
-  };
+  const [login, setLogin] = useState(true);
 
   return (
-    <div>
-      <div className={l.login_button_wrapper}>
-        <button className={l.nav_button} onClick={loginSwitch}>Войти</button>
-        <button className={l.nav_button} onClick={signupSwitch}>Зарегистрироваться</button>
-      </div>
-      <h1 className={l.login_title}>{viewMode === 'login' ? "Вход в систему" : "Регистрация"}</h1>
-      <div>
-        {viewMode === 'login' ? <Login /> : <SignUp />}
-      </div>
-    </div>
+    <section className={l.container}>
+      <LoginTitle login={login} setLogin={setLogin} />
+      {login ? <SignIn /> : <SignUp />}
+      {login && 
+      <div className={l.button_container}>
+        <p className={l.wrapper}>или войдите через</p>
+      <LinkAuth title={' Войти с Яндекс ID'} src={yandex} href={'/'}/>
+      <LinkAuth title={'Войти с VK ID'} src={vk} href={'/'}/>
+      </div>}
+    </section>
   );
 };
 

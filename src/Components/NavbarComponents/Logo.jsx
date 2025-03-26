@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import l from "./NavbarComponents.module.css";
-import logo from '../../assets/images/logo.jpg'
+import logo from '../../assets/images/logo.png'
 
 const Logo = () => {
     return (
-      <div className={l.logoWrapper}>
-        <Link to="/" className={l.logoLink}>
-          <img className={l.logo} src={logo} alt="logo" />
-          <span className={l.name}>Schedule University</span>
-        </Link>
-      </div>
+      <Link to="/" className={l.logoLink}>
+        <img className={l.logo} src={logo} alt="logo" width={'275'} height={'40'}/>
+      </Link>
     );
   };
 
