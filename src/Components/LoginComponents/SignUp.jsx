@@ -78,7 +78,6 @@ const SignUp = () => {
               Запомнить пароль
           </label>
           </div>
-          
           <button
             type="button"
             className={l.toggle_password}

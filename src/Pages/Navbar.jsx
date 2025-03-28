@@ -2,8 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import ProfileElement from "../Components/NavbarComponents/ProfileElement.jsx";
 import Logo from "../Components/NavbarComponents/Logo.jsx";
 import n from "./styles/Navbar.module.css";
-import { useContext } from "react";
-import { AuthContext } from "../Context/AuthContext.js";
 import NavbarLinks from "../Components/NavbarComponents/NavbarLinks.jsx";
 import { LinkCustom } from "../Components/UI/LinkCustom.jsx";
 import { useDispatch } from "react-redux";
@@ -13,8 +11,9 @@ function Navbar() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const location = useLocation();
 
+
   const login = (e) => {
-    setIsAuth(true);
+    dispatch(authSlice.actions.setIsAuth(true))
     localStorage.setItem("auth", "token123");
   };
 
