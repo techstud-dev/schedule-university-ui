@@ -4,23 +4,24 @@ import Logo from "../Components/NavbarComponents/Logo.jsx";
 import n from "./styles/Navbar.module.css";
 import NavbarLinks from "../Components/NavbarComponents/NavbarLinks.jsx";
 import { LinkCustom } from "../Components/UI/LinkCustom.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../redux/registration_reducer.js";
+import { authSlice } from "../app/auth.slice.js";
 
 function Navbar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  const isAuth = useSelector(state => authSlice.selectors.selectIsAuth(state));
+
   const location = useLocation();
 
-
-  const login = (e) => {
-    dispatch(authSlice.actions.setIsAuth(true))
-    localStorage.setItem("auth", "token123");
-  };
+  // const login = (e) => {
+  //   dispatch(authSlice.actions.setIsAuth(true))
+  //   localStorage.setItem("auth", "token123");
+  // };
 
   const welcome = location.pathname === '/welcome';
   let menu = false;
-
-  const dispatch = useDispatch();
 
   const handelClickEntrance = () => {
     dispatch(setLogin(false));
@@ -44,9 +45,9 @@ function Navbar() {
             <Link to="/about" className={n.link}>
               Почему мы?
             </Link>
-            <button onClick={login} className={n.button}>
+            {/* <button onClick={login} className={n.button}>
               <Link to={"/schedule"}>Войти</Link>
-            </button>
+            </button> */}
           </>
         )}
       </div>}

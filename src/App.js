@@ -23,9 +23,6 @@ function App() {
         <main className="content">
           <AppRouter />
         </main>
-        <footer className="footer">
-          <Footer />
-        </footer>
     </div>
   );
 }
