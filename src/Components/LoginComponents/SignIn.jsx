@@ -48,8 +48,6 @@ const SignIn = () => {
     } else {
       console.log('Submitted Data:', data, university, group);
       reset();
-      setIsGroup('');
-      setIsUniversity('');
       navigate('/welcome');
     }
 };
