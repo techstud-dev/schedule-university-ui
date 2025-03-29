@@ -1,23 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-self: center;
+    width: fit-content;
+}
+
 .login {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
 .title_container {
     margin-bottom: 38px;
+    max-width: 250px;
 }
 
 .title_container h2 {
     color: #fff;
-    font-size: 32px;
+    font-size: 24px;
     font-family: Inter;
     font-weight: 400;
 }
 
 .title_container p {
     color: #F5F5F5;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2px;
 }
 
 .title_container button {
@@ -25,7 +38,7 @@
     outline: none;
     border: none;
     color: #D9FD08;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     margin-left: 10px;
 }
@@ -38,27 +51,27 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
-    width: 100%;
-    align-items: center;
+    gap: 5px;
+    width: 250px;
+    align-items: start;
     margin-bottom: 70px;
 }
 
 .form input {
-    width: 409px;
-    padding: 21px 31px;
+    width: 250px;
+    padding: 17px 25px;
     border-radius: 12px;
     border: 3px solid #D9FD08;
     font-size: 13px;
     background-color: transparent;
     transition: border-color 0.3s;
     color: #F5F5F5;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .form input::placeholder {
     color: #F5F5F5;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -76,12 +89,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 409px;
+    width: 100%;
 } 
 
 .password_container button {
     position: absolute;
-    height: 70px;
+    height: 52px;
     bottom: 0;
     top: 0;
     right: 15px;
@@ -93,15 +106,16 @@
 
 .error_message {
     color: #e63946;
-    font-size: 18px;
+    font-size: 12px;
     min-height: 20px;
 }
 
 .button {
-    width: 409px;
+    width: 250px;
     gap: 20px;
     padding: 14px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .button:disabled {
@@ -114,28 +128,32 @@
     stroke: #fff;
 }
 
+.button svg {
+    width: 20px;
+    height: 20px;
+}
+
 .link {
-    width: 409px;
+    width: 250px;
     gap: 20px;
     padding: 12px 21px;
 }
 
 .wrapper {
     width: 100%;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
     position: relative;
     color: #fff;
     font-size: 16px;
     text-align: center;
 }
 
-.wrapper:after,
-.wrapper::before {
+.wrapper:after {
     position: absolute;
     right: 0;
-    top: 50%;
+    bottom: -5px;
     content:'';
-    width: 30%;
+    width: 100%;
     height: 1px;
     background-color: #fff;
 }
@@ -145,6 +163,7 @@
 }
 
 .button_container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,15 +176,16 @@ input[type="checkbox"] {
 
 label {
     color: #fff;
-    font-size: 16px;
+    font-size: 10px;
     font-family: 'Inter';
     display: flex;
+    margin-bottom: 25px;
 }
 
 .custom_checkbox {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border: 2px solid #fff;
     border-radius: 4px;
     position: relative;
@@ -178,10 +198,22 @@ input[type="checkbox"]:checked + .custom_checkbox::after {
     position: absolute;
     left: 5px;
     top: 2px;
-    width: 5px;
-    height: 10px;
+    width: 3%;
+    height: 7px;
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     opacity: 1;
+}
+
+.button_container_registration {
+    color: #fff;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 7px;
+}
+
+.button_container_registration button {
+    font-size: 16px;
 }

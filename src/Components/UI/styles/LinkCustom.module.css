@@ -14,7 +14,7 @@
 .primary {
     font-weight: 700;
     color: #fff;
-    font-size: 24px;
+    font-size: 16px;
     border: 3px solid #D9FD08;
 }
 
@@ -26,7 +26,7 @@
 .secondary {
     background-color: #D9FD08;
     color: #000;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
 }
 

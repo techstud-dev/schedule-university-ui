@@ -1,41 +1,40 @@
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileElement from "../Components/NavbarComponents/ProfileElement.jsx";
 import Logo from "../Components/NavbarComponents/Logo.jsx";
-import n from "./styles/Navbar.module.css";
 import NavbarLinks from "../Components/NavbarComponents/NavbarLinks.jsx";
 import { LinkCustom } from "../Components/UI/LinkCustom.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { setLogin } from "../redux/registration_reducer.js";
 import { authSlice } from "../app/auth.slice.js";
+import { registrationSlice } from "../app/registration.slice.js";
+import n from "./styles/Navbar.module.css";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const isAuth = useSelector(state => authSlice.selectors.selectIsAuth(state));
 
-  const location = useLocation();
-
-  // const login = (e) => {
-  //   dispatch(authSlice.actions.setIsAuth(true))
-  //   localStorage.setItem("auth", "token123");
-  // };
+  const login = () => {
+    dispatch(authSlice.actions.setIsAuth(true))
+    localStorage.setItem("auth", "token123");
+  };
 
   const welcome = location.pathname === '/welcome';
   let menu = false;
 
   const handelClickEntrance = () => {
-    dispatch(setLogin(false));
+    dispatch(registrationSlice.actions.setIsLogin(true));
   }
 
   const handelClickRegistration = () => {
-    dispatch(setLogin(true));
+    dispatch(registrationSlice.actions.setIsLogin(false));
   }
 
   return (
     <nav className={n.navbar}>
       <Logo className={welcome? n.welcome_logo : ''} />
       {menu && <div className={n.menu}>
-        {isAuth ? (
+      {isAuth ? (
           <>
             <NavbarLinks />
             <ProfileElement />
@@ -45,9 +44,9 @@ function Navbar() {
             <Link to="/about" className={n.link}>
               Почему мы?
             </Link>
-            {/* <button onClick={login} className={n.button}>
+            <button onClick={login} className={n.button}>
               <Link to={"/schedule"}>Войти</Link>
-            </button> */}
+            </button>
           </>
         )}
       </div>}

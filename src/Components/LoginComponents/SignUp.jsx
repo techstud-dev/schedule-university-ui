@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import passHideIcon from "../../assets/icons/pass_hide.svg";
+import passHideIcon from "../../assets/icons/Eye off.svg";
 import passShowIcon from "../../assets/icons/pass_show.svg";
 import { ButtonCustom } from "../UI/ButtonCustom";
-import l from "./styles/Login.module.css";
+import l from "./styles/LoginComponents.module.css";
 
-const SignUp = () => {
+const SignUp = ({setLogin}) => {
   const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -15,6 +15,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({
     mode: 'onBlur',
@@ -28,6 +29,7 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log('Submitted Data:', data);
+    reset();
     navigate('/'); 
 };
 
@@ -107,6 +109,11 @@ const SignUp = () => {
             </defs>
           </svg>
         </ButtonCustom>
+
+        <p className={l.button_container_registration}>
+          Нет аккаунта?
+          <ButtonCustom color={'text'} onClick={()=>setLogin(false)}>Регистрация</ButtonCustom>
+        </p>
     </form>
   );
 };

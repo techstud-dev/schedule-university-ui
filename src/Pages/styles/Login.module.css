@@ -3,11 +3,11 @@
 }
 
 .login {
-    width: 80%;
+    width: 90%;
     max-width: 1680px;
     display: grid;
-    grid-template-columns: minmax(600px, 1fr) minmax(50%, 1088px);
-    gap: 40px;
+    grid-template-columns: minmax(420px, 1fr) minmax(50%, 1088px);
+    gap: 150px;
     align-items: center;
     margin: auto;
 }

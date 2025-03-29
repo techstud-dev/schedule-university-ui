@@ -17,7 +17,7 @@ const WelcomeCard = ({img, title, description, link, links}) => {
             </LinkCustom>}
             <ul className={w.list_card}>
             {links && links.map((link, id) => 
-                <li>
+                <li key={id}>
                     <img key={id} src={link.img} alt={link.alt} />
                     <VisuallyHidden>{link.alt}</VisuallyHidden>
                 </li>
@@ -27,4 +27,4 @@ const WelcomeCard = ({img, title, description, link, links}) => {
     )
 }
 
-export default WelcomeCard
+export default WelcomeCard;

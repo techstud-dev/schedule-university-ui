@@ -29,7 +29,7 @@ ul {
 .header {
     flex: 0 0 auto;
     max-width: 1680px;
-    width: 80%;
+    width: 90%;
 }
 
 .content {
@@ -42,4 +42,5 @@ ul {
 
 .footer {
     flex: 0 0 auto;
+    width: 90%;
 }

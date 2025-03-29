@@ -1,19 +1,21 @@
-import l from './styles/Login.module.css'
+import { ButtonCustom } from '../UI/ButtonCustom'
+import l from './styles/LoginComponents.module.css'
 
 const LoginTitle = ({login, setLogin}) => {
     return (
         <div className={l.title_container}>
             <h2>
-                {login ? 'Создать аккаунт'
-                : 'Добро пожаловать, пользователь'}
+                {login ? 'Добро пожаловать, пользователь'
+                : 'Создать аккаунт'}
             </h2>
-            {login && <p>
+            {!login && <p>
                 Уже есть аккаунт?
-                <button type="button" onClick={()=>setLogin(false)}>Войти</button>
-                </p>}
+                <ButtonCustom color={'text'} onClick={()=>setLogin(true)}>Войти</ButtonCustom>
+                </p>
+            }
         </div>
         
     )
 }
 
-export default LoginTitle
+export default LoginTitle;

@@ -1,8 +1,8 @@
 import { arrow } from '../../utils/arrow';
 import { LinkCustom } from '../UI/LinkCustom';
 import { data } from './libs/data';
-import w from './styles/Welcome.module.css';
 import WelcomeCard from './WelcomeCard';
+import w from './styles/Welcome.module.css';
 
 const WelcomeContainer = () => {
     return (
@@ -23,4 +23,4 @@ const WelcomeContainer = () => {
     )
 }
 
-export default WelcomeContainer
+export default WelcomeContainer;

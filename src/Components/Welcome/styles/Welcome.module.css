@@ -8,7 +8,7 @@
 }
 
 .wrapper {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -23,8 +23,9 @@
 .link {
     max-width: 350px;
     padding: 12px 19px;
-    margin: 0 auto 102px;
+    margin: 0 auto 95px;
     gap: 20px;
+    justify-content: center;
 }
 
 .list {
@@ -54,7 +55,7 @@
 }
 
 .card_wrapper_picture > p {
-    font-size: 32px;
+    font-size: 24px;
     color: #F5F5F5;
 }
 

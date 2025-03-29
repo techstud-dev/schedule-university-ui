@@ -1,10 +1,10 @@
 import { LinkCustom } from "../UI/LinkCustom";
-import l from "./styles/Login.module.css";
+import l from "./styles/LoginComponents.module.css";
 
 const LinkAuth = ({href, title, src}) => {
     return (
         <LinkCustom path={href} className={l.link}>
-            <img src={src} alt={`иконка ${title}`} width={'35'} height={'35'}/>
+            <img src={src} alt={`иконка ${title}`} width={'22'} height={'22'}/>
             <p>{title}</p>
         </LinkCustom>
     )
