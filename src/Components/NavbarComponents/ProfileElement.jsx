@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import p from "./NavbarComponents.module.css";
 import { useState } from "react";
-import profileIcon from "../../assets/icons/profile.png";
 import { useDispatch } from "react-redux";
+import profileIcon from "../../assets/icons/profile.png";
 import { authSlice } from "../../app/auth.slice";
+import p from "./NavbarComponents.module.css";
 
 const ProfileElement = () => {
   const dispatch = useDispatch();

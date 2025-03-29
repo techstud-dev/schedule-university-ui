@@ -16,11 +16,6 @@ ul {
     margin: 0 30px 0 30px;
 }
 
-
-.footer {
-    background-color: #fff;
-}
-
 .footer__title {
     display: flex;
     align-items: center;

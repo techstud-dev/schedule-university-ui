@@ -1,0 +1,32 @@
+.input {
+    border-radius: 12px;
+    border: 3px solid #D9FD08;
+    font-size: 13px;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    color: #F5F5F5;
+    font-size: 20px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.error {
+    border-color: #e63946;
+}
+
+.error_text {
+    font-size: 14px;
+    color: #e63946;
+    height: 18px;
+}
+
+.label {
+    font-size: 20px;
+    font-family: inherit;
+    color: #F5F5F5;
+    font-weight: 500;
+}

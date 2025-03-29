@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import "./App.css";
-import Footer from "./Pages/Footer";
 import Navbar from "./Pages/Navbar";
 import AppRouter from "./routes/AppRouter";
 import { authSlice } from "./app/auth.slice";
 import { useDispatch } from "react-redux";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,15 +17,12 @@ function App() {
 
   return (
     <div className="App">
-        <div className="header">
+        <header className="header">
           <Navbar />
-        </div>
-        <div className="content">
+        </header>
+        <main className="content">
           <AppRouter />
-        </div>
-        <div className="footer">
-          <Footer />
-        </div>
+        </main>
     </div>
   );
 }
