@@ -1,0 +1,42 @@
+.link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.primary {
+    font-weight: 700;
+    color: #fff;
+    font-size: 16px;
+    border: 3px solid #D9FD08;
+}
+
+.primary:hover {
+    border-color: #a5c202;
+    color: #eae8e8;
+}
+
+.secondary {
+    background-color: #D9FD08;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.secondary:not(:disabled):hover {
+    background-color: #a5c202;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}

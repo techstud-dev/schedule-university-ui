@@ -1,0 +1,40 @@
+.calendar_wrapper {
+    display: flex;
+    gap: 40px;
+    height: 800px;
+    width: 100%;
+}
+
+.container_monthCalendar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+
+.container_monthCalendar h2 {
+    color: #F5F5F5;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container_monthCalendar h2 span{
+    color: #DBFC08;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.button_containerIntagration {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar_wrapper div:first-of-type.fc-direction-ltr {
+    max-height: 550px;
+}
+
+.calendar_wrapper div:first-of-type .fc-view-harness,
+.calendar_wrapper div:first-of-type .fc-header-toolbar {
+    max-height: 450px;
+}

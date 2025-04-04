@@ -3,7 +3,6 @@
     justify-content: space-around;
     align-items: center;
     height: 65px;
-    background-color: #363434;
 }
 
 .menu {
@@ -23,4 +22,20 @@
 
 .button:hover {
     background-color: #a3a3a3c2;
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.login_link {
+    padding: 6px 11px;
+    min-width: 175px;
+    justify-content: center;
+}
+
+.welcome_logo {
+    cursor: default;
 }

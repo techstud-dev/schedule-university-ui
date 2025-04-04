@@ -1,0 +1,33 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.primary {
+    background-color: #D9FD08;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.primary:not(:disabled):hover {
+    background-color: #a5c202;
+}
+
+.text {
+    background-color: transparent;
+    color: #D9FD08;
+    outline: none;
+    border: none;
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+.circle {
+    border-radius: 50%;
+}

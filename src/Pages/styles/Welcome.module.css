@@ -1,0 +1,6 @@
+.container {
+    width: 100%;
+    background-image: url('../../assets/images/welcome.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

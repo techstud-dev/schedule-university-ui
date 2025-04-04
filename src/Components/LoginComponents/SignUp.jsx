@@ -1,210 +1,120 @@
 import { useState } from "react";
-import { useInput } from "../../hooks/useInput";
-import l from "./styles/Login.module.css";
-import passHideIcon from "../../assets/icons/pass_hide.png";
-import passShowIcon from "../../assets/icons/pass_show.png";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { authSlice } from "../../app/auth.slice";
-import { useRegisterMutation } from "../../app/authApi";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import passHideIcon from "../../assets/icons/Eye off.svg";
+import passShowIcon from "../../assets/icons/pass_show.svg";
+import { ButtonCustom } from "../UI/ButtonCustom";
+import l from "./styles/LoginComponents.module.css";
 
-const SignUp = () => {
-  const dispatch = useDispatch();
-  const [register, { data, error, isLoading }] = useRegisterMutation();
-
-  const universities = ["Другое", "Вуз 1", "Вуз 2", "Вуз 3", "Вуз 4", "Вуз 5"];
-
-  const [user, setUser] = useState({
-    username: "",
-    firstname: "",
-    surname: "",
-    middlename: "",
-    university: "",
-    group: "",
-    email: "",
-    phone: "",
-    password: "",
-    token: 123
+const SignUp = ({setLogin}) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+};
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: 'onBlur',
   });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUser((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-      token: 123,
-    }));
-  };
   
-  const signUp = (event) => {
-    event.preventDefault();
-    
-  };
-
-  // const submitForm = (event) => {
-  //   event.preventDefault();
-  //   AuthService.register(user);
-
-  //   // signUp(user);
-  // };
-
-  const handleRegister = async () => {
-    await register(user);
-    dispatch(authSlice.actions.setIsAuth(true))
-    localStorage.setItem("auth", JSON.stringify(user));
-  };
-
-
-  const email = useInput("", {
-    isEmpty: true,
-    isMinLengthError: 5,
-    isEmail: false,
-  });
-  const password = useInput("", {
-    isEmpty: true,
-    isMinLengthError: 6,
-    isMaxLengthError: 15,
-  });
-
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  const togglePassVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
   };
 
+  const onSubmit = (data) => {
+    console.log('Submitted Data:', data);
+    reset();
+    navigate('/'); 
+};
+
   return (
-    <div className={l.login_container}>
-      <form className={l.login_form}>
-        <div className={l.input_group}>
-          <input
-            className={l.login_input}
-            name="username"
-            value={user.username}
-            onChange={handleInputChange}
-            //   onBlur={(e) => email.onBlur(e)}
-            placeholder={"Введите никнейм"}
-          />
-          <input
-            className={l.login_input}
-            name="firstname"
-            value={user.firstname}
-            onChange={handleInputChange}
-            //   onBlur={(e) => email.onBlur(e)}
-            placeholder={"Введите своё имя"}
-          />
-          <input
-            className={l.login_input}
-            name="surname"
-            value={user.surname}
-            onChange={handleInputChange}
-            //   onBlur={(e) => email.onBlur(e)}
-            placeholder={"Введите свою фамилию"}
-          />
-          <input
-            className={l.login_input}
-            name="middlename"
-            value={user.middlename}
-            onChange={handleInputChange}
-            //   onBlur={(e) => email.onBlur(e)}
-            placeholder={"Введите своё отчество (если есть)"}
-          />
-        </div>
-
+    <form className={l.form} onSubmit={handleSubmit(onSubmit)}>
+      <div>
         <input
-          className={l.login_input}
-          type="text"
-          list="vuz-list"
-          placeholder="Выберите ВУЗ"
+          className={l.input}
+          id="email"
+          type="email"
+          name={"email"}
+          placeholder={"Адрес почты"}
+          autoComplete="email"
+          {...register('email', {
+          required: 'Поле обязательно к заполнению',
+          pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: 'Введите корректный адрес электронной почты',
+                },
+            })}
         />
-        <datalist id="vuz-list" className={l.login_input}>
-          <option value="" disabled selected>
-            Другое
-          </option>
-          {universities.map((vuz) => (
-            <option>{vuz}</option>
-          ))}
-        </datalist>
-        <input
-          className={l.login_input}
-          name={"group"}
-          value={user.group}
-          onChange={handleInputChange}
-          //   onBlur={(e) => email.onBlur(e)}
-          placeholder={"Введите номер группы"}
-        />
-
-        {email.isDirty && email.isEmpty && (
-          <div className={l.error_message}>Поле не может быть пустым</div>
-        )}
-        {email.isDirty && email.isMinLengthError && (
-          <div className={l.error_message}>Слишком короткий email</div>
-        )}
-        {email.isDirty && email.isEmailError && (
-          <div className={l.error_message}>Некорректный email</div>
-        )}
-        <div className={l.input_group}>
-          <input
-            className={l.login_input}
-            name="email"
-            value={user.email}
-            onChange={handleInputChange}
-            onBlur={(e) => email.onBlur(e)}
-            placeholder={"Электронная почта"}
-          />
-          <input
-            className={l.login_input}
-            name="phone"
-            value={user.phone}
-            onChange={handleInputChange}
-            //   onBlur={(e) => email.onBlur(e)}
-            type="tel"
-            placeholder={"Введите свой номер телефона"}
-          />
-        </div>
-        {password.isDirty && password.isEmpty && (
-          <div className={l.error_message}>Поле не может быть пустым</div>
-        )}
-        {password.isDirty && password.isMinLengthError && (
-          <div className={l.error_message}>Слишком короткий пароль</div>
-        )}
-        {password.isDirty && password.isMaxLengthError && (
-          <div className={l.error_message}>Слишком длинный пароль</div>
-        )}
+        <p className={l.error_message} >{errors.email?.message}</p>
+      </div>
         <div className={l.password_container}>
-          <input
-            name="password"
-            value={user.password}
-            onChange={handleInputChange}
-            className={l.login_input}
-            autoComplete="new-password"
-            type={isPasswordVisible ? "text" : "password"} // Условие для смены типа
-            placeholder="Пароль"
-            // {...password}
-          />
+          <div>
+            <input
+              name="password"
+              className={l.input}
+              type={isPasswordVisible ? "text" : "password"} 
+              placeholder="Пароль"
+              autoComplete="current-password"
+              {...register('password', {
+                required: 'Поле обязательно к заполнению',
+                minLength: {
+                    value: 6,
+                    message: 'Пароль должен быть длинее 6 символов',
+                },
+                maxLength: {
+                  value: 14,
+                  message: 'Пароль должен быть короче 14 символов',
+                  }
+                })}
+            />
+            <p className={l.error_message}>{errors.password?.message}</p>
+            <label>
+              <input type="checkbox" id="customCheckbox" checked={isChecked} onChange={handleCheckboxChange}/>
+              <span className={l.custom_checkbox}></span>
+              Запомнить пароль
+          </label>
+          </div>
           <button
             type="button"
             className={l.toggle_password}
-            onClick={togglePasswordVisibility}
+            onClick={togglePassVisibility}
           >
             {isPasswordVisible ? (
-              <img src={passShowIcon} />
+              <img src={passShowIcon} alt='Скрыть пароль'/>
             ) : (
-              <img src={passHideIcon} />
+              <img src={passHideIcon} alt='Показать пароль'/>
             )}
           </button>
         </div>
+        <ButtonCustom
+          className={l.button}
+          disabled={!isValid}
+          type="submit"
+        >
+          <span>Продолжить</span>
+          <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_329_414)">
+              <path d="M16.5 22L22 16.5M22 16.5L16.5 11M22 16.5H11M2.75 16.5C2.75 8.90608 8.90608 2.75 16.5 2.75C24.0939 2.75 30.25 8.90608 30.25 16.5C30.25 24.0939 24.0939 30.25 16.5 30.25C8.90608 30.25 2.75 24.0939 2.75 16.5Z" stroke="#1E1E1E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_329_414">
+                <rect width="33" height="33" fill="white" transform="matrix(-1 0 0 -1 33 33)"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </ButtonCustom>
 
-        <Link to={"/schedule"}>
-          <button
-            className={l.login_button}
-            onClick={handleRegister}
-            // disabled={!email.isInputValid || !password.isInputValid}
-          >
-            Зарегистрироваться
-          </button>
-        </Link>
-      </form>
-    </div>
+        <p className={l.button_container_registration}>
+          Нет аккаунта?
+          <ButtonCustom color={'text'} onClick={()=>setLogin(false)}>Регистрация</ButtonCustom>
+        </p>
+    </form>
   );
 };
 
