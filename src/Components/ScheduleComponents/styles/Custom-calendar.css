@@ -1,0 +1,87 @@
+.fc {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: #262626;
+    border-radius: 20px;
+}
+
+.selected_date {
+    background-color: aliceblue;
+}
+
+.fc-day {
+    width: 150px;
+    border-right: 1px solid #ccc;
+}
+
+.fc-day:last-child {
+    border-right: none;
+}
+
+.fc-time-grid .fc-slot {
+    height: 50px;
+}
+
+.fc-event {
+    background-color: #E2F9FF;
+    border-radius: 5px;
+}
+
+.fc-event .fc-event-title-container {
+    color: #3181CD;
+}
+
+.fc-event .fc-event-time {
+    color: #3181CD;
+}
+
+.fc .fc-timegrid-slot {
+    border-bottom: 0px;
+    height: 90px;
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 1px dashed #F5F5F5;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border: none;
+}
+
+.fc-scrollgrid-section-header {
+    border: none;
+}
+
+.fc-scrollgrid thead:first-of-type {
+    background-color: #1C1C1C;
+    border-radius: 20px;
+}
+
+.fc-scrollgrid thead:first-of-type table {
+    height: 40px;
+    border-bottom-style: hidden;
+}
+
+.fc-scrollgrid thead:first-of-type th.fc-col-header-cell {
+    padding-top: 10px;
+}
+
+.fc-button-group {
+    display: flex;
+    gap: 20px;
+}
+
+.fc-button-group .fc-button-primary {
+    border: 3px solid #DBFC08;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DBFC08;
+    font-weight: bold;
+    font-size: 20px;
+}

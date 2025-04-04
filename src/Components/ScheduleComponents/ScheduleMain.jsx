@@ -6,6 +6,7 @@ import Dashboard from "./DashboardComponenst/Dashboard";
 import { useFetching } from "../../hooks/useFetching";
 import ScheduleList from "./CardsComponents/ScheduleList";
 import Homework from "./HomeworkComponents/Homework";
+import MyCalendar from "./Calendar";
 // import { useDate } from "../../hooks/useDate";
 // import lesson from "../../redux/redux_store";
 
@@ -47,6 +48,7 @@ const ScheduleMain = () => {
   };
 
   return (
+    <div>
     <div className={s.wrapper}>
       {scheduleError && <h2 className={s.error}>Произошла ошибка ^_^</h2>}
 
@@ -85,6 +87,7 @@ const ScheduleMain = () => {
           <Homework />
         </div>
       )}
+      </div>
     </div>
   );
 };

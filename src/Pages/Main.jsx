@@ -1,10 +1,8 @@
-import ScheduleMain from "../Components/ScheduleComponents/ScheduleMain";
+import MyCalendar from "../Components/ScheduleComponents/Calendar";
 
 function Main() {
     return (
-      <div className="Main">
-        <ScheduleMain />
-      </div>
+      <MyCalendar />
     );
   }
   
