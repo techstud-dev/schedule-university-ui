@@ -5,6 +5,9 @@ import { ButtonCustom } from "../UI/ButtonCustom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import l from "./styles/Login.module.css";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../../app/authApi";
+import { authSlice } from "../../app/auth.slice";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -18,14 +21,25 @@ const SignIn = () => {
   
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
+  const dispatch = useDispatch();
+  const [loginRequest, { data, error, isLoading }] = useLoginMutation();
+
   const togglePassVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
   };
 
-  const onSubmit = (data) => {
-    console.log('Submitted Data:', data);
-    navigate('/'); 
-};
+  const onSubmit = async (data) => {
+      console.log('Submitted Data:', data);
+      try {
+        const response = await loginRequest(data).unwrap();
+        console.log('Server Response:', response);
+        dispatch(authSlice.actions.setIsAuth(true));
+        localStorage.setItem("auth", JSON.stringify(data));
+        navigate('/');
+      } catch (err) {
+        console.error('Ошибка при входе:', err);
+      }
+    };
 
   return (
     <form className={l.form} onSubmit={handleSubmit(onSubmit)}>
