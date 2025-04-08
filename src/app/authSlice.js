@@ -24,6 +24,17 @@ export const authSlice = createSlice({
         ...state,
         isLoading: action.payload
       }
+    },
+    logout: (state) => {
+      return {
+        ...state,
+        isAuth: false
+      };
     }
   }
 })
+
+export const {
+  setIsAuth,
+  logout,
+} = authSlice.actions;
