@@ -18,12 +18,12 @@ function App() {
 
   return (
     <div className="App">
-        <div className="header">
+        <header className="header">
           <Navbar />
-        </div>
-        <div className="content">
+        </header>
+        <main className="content">
           <AppRouter />
-        </div>
+        </main>
         <div className="footer">
           <Footer />
         </div>

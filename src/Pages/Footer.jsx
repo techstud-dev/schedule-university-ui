@@ -1,5 +1,5 @@
 import f from "./styles/Footer.module.css";
-import logo from "../assets/images/logo.jpg";
+import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -7,7 +7,7 @@ function Footer() {
     <div className={f.footer}>
       <Link to="/" className={f.link__title}>
         <h2 className={f.footer__title}>
-          <img className={f.logo} src={logo} alt="Логотип" /> Schedule University
+          <img className={f.logo} src={logo} alt="Логотип" />
         </h2>
       </Link>
       <div className={f.footer__container}>
