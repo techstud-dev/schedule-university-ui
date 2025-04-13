@@ -26,15 +26,11 @@ export const timeDeterminant = (time) => {
 };
 
 export const parseTime = (timeRange) => {
-  // Функция для преобразования времени в нужный формат
-  // Разделяем исходную строку на начало и конец
   const [startTime, endTime] = timeRange.split(" - ");
 
-  // Получаем текущее время для использования года, месяца и дня
   const now = DateTime.local();
   const timeZone = now.zoneName;
 
-  // Создаем объекты времени с учетом часового пояса
   const startDateTime = DateTime.fromFormat(
     `${now.toFormat("yyyy-MM-dd")} ${startTime}`,
     "yyyy-MM-dd HH:mm",
@@ -47,7 +43,6 @@ export const parseTime = (timeRange) => {
     { zone: timeZone }
   );
 
-  // Форматируем время для вывода
   const options = { hour: "numeric", minute: "numeric", hour12: false }; // Формат 24 часа
   return {
     start: startDateTime.setZone(timeZone).toLocaleString(options),
@@ -56,9 +51,7 @@ export const parseTime = (timeRange) => {
 };
 
 export const convertTime = (totalMinutes) => {
-    const hours = Math.floor(totalMinutes / 60); // Получаем полные часы
-    const minutes = totalMinutes % 60; // Получаем оставшиеся минуты
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60; 
     return `${hours} часов и ${minutes} минут`;
 }
-
-

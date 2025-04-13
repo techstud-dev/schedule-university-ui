@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.login {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(600px, 1fr) minmax(50%, 1088px);
+    gap: 40px;
+    align-items: center;
+}
+
+.login > img {
+    width: 100%;
+    height: auto;
+}

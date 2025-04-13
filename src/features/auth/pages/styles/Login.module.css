@@ -1,0 +1,182 @@
+.title_container {
+    margin-bottom: 38px;
+}
+
+.title_container h2 {
+    color: #fff;
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 400;
+}
+
+.title_container p {
+    color: #F5F5F5;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.title_container button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #D9FD08;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.title_container h2 button{
+    background-color: transparent;
+    color: #D9FD08;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.form input {
+    width: 409px;
+    padding: 21px 31px;
+    border-radius: 12px;
+    border: 3px solid #D9FD08;
+    font-size: 13px;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    color: #F5F5F5;
+    font-size: 20px;
+}
+
+.form input::placeholder {
+    color: #F5F5F5;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input:focus {
+    border-color: #e0e0e0;
+    outline: none;
+}
+
+.input:invalid {
+    border: 2px solid red; 
+}
+
+.password_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 409px;
+} 
+
+.password_container button {
+    position: absolute;
+    height: 70px;
+    bottom: 0;
+    top: 0;
+    right: 15px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.error_message {
+    color: #e63946;
+    font-size: 18px;
+    min-height: 20px;
+}
+
+.button {
+    width: 409px;
+    gap: 20px;
+    padding: 14px;
+    justify-content: center;
+}
+
+.button:disabled {
+    color: #fff;
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+}
+
+.button:disabled svg path {
+    stroke: #fff;
+}
+
+.link {
+    width: 409px;
+    gap: 20px;
+    padding: 12px 21px;
+}
+
+.wrapper {
+    width: 100%;
+    margin-bottom: 45px;
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.wrapper:after,
+.wrapper::before {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    content:'';
+    width: 30%;
+    height: 1px;
+    background-color: #fff;
+}
+
+.wrapper::before {
+    left: 0;
+}
+
+.button_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label {
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Inter';
+    display: flex;
+}
+
+.custom_checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]:checked + .custom_checkbox::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 1;
+}

@@ -1,10 +1,9 @@
-import ScheduleContainer from "../Components/SchedulePageComponents/ScheduleContainer";
+import ScheduleMain from "../features/schedule/components/ScheduleMain";
 
 function Main() {
     return (
       <div className="Main">
-        <h1>Расписание занятий</h1>
-        <ScheduleContainer />
+        <ScheduleMain />
       </div>
     );
   }
