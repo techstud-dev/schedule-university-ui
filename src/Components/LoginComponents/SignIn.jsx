@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import l from "./styles/Login.module.css";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "../../app/authApi";
-import { authSlice } from "../../app/auth.slice";
+import { useLoginUserMutation } from "../../app/authApi";
+import { authSlice } from "../../app/authSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -18,88 +18,86 @@ const SignIn = () => {
   } = useForm({
     mode: 'onBlur',
   });
-  
+
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const dispatch = useDispatch();
-  const [loginRequest, { data, error, isLoading }] = useLoginMutation();
+  const [loginRequest, { data, error, isLoading }] = useLoginUserMutation();
 
   const togglePassVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
   };
 
   const onSubmit = async (data) => {
-      console.log('Submitted Data:', data);
-      try {
-        const response = await loginRequest(data).unwrap();
-        console.log('Server Response:', response);
-        dispatch(authSlice.actions.setIsAuth(true));
-        localStorage.setItem("auth", JSON.stringify(data));
-        navigate('/');
-      } catch (err) {
-        console.error('Ошибка при входе:', err);
-      }
-    };
+    console.log('Submitted Data:', data);
+    try {
+      const response = await loginRequest(data).unwrap();
+      dispatch(authSlice.actions.setIsAuth(true));
+      navigate('/');
+    } catch (err) {
+      console.error('Ошибка при входе:', err);
+    }
+  };
 
   return (
-    <form className={l.form} onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <input
-          className={l.input}
-          id="email"
-          type="email"
-          name={"email"}
-          placeholder={"Адрес почты"}
-          autoComplete="email"
-          {...register('email', {
-          required: 'Поле обязательно к заполнению',
-          pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: 'Введите корректный адрес электронной почты',
+      <form className={l.form} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input
+              className={l.input}
+              id="email"
+              type="email"
+              name={"email"}
+              placeholder={"Адрес почты"}
+              autoComplete="email"
+              {...register('email', {
+                required: 'Поле обязательно к заполнению',
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: 'Введите корректный адрес электронной почты',
                 },
-            })}
-        />
-        <p className={l.error_message} >{errors.email?.message}</p>
-      </div>
+              })}
+          />
+          <p className={l.error_message} >{errors.email?.message}</p>
+        </div>
         <div className={l.password_container}>
           <div>
             <input
-              name="password"
-              className={l.input}
-              type={isPasswordVisible ? "text" : "password"} 
-              placeholder="Пароль"
-              autoComplete="current-password"
-              {...register('password', {
-                required: 'Поле обязательно к заполнению',
-                minLength: {
+                name="password"
+                className={l.input}
+                type={isPasswordVisible ? "text" : "password"}
+                placeholder="Пароль"
+                autoComplete="current-password"
+                {...register('password', {
+                  required: 'Поле обязательно к заполнению',
+                  minLength: {
                     value: 6,
                     message: 'Пароль должен быть длинее 6 символов',
-                },
-                maxLength: {
-                  value: 14,
-                  message: 'Пароль должен быть короче 14 символов',
+                  },
+                  maxLength: {
+                    value: 14,
+                    message: 'Пароль должен быть короче 14 символов',
                   }
                 })}
             />
             <p className={l.error_message}>{errors.password?.message}</p>
           </div>
-          
+
           <button
-            type="button"
-            className={l.toggle_password}
-            onClick={togglePassVisibility}
+              type="button"
+              className={l.toggle_password}
+              onClick={togglePassVisibility}
           >
             {isPasswordVisible ? (
-              <img src={passShowIcon} alt='Скрыть пароль'/>
+                <img src={passShowIcon} alt='Скрыть пароль'/>
             ) : (
-              <img src={passHideIcon} alt='Показать пароль'/>
+                <img src={passHideIcon} alt='Показать пароль'/>
             )}
           </button>
         </div>
         <ButtonCustom
-          className={l.button}
-          disabled={!isValid}
-          type="submit"
+            className={l.button}
+            disabled={!isValid}
+            type="submit"
         >
           <span>Продолжить</span>
           <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +111,7 @@ const SignIn = () => {
             </defs>
           </svg>
         </ButtonCustom>
-    </form>
+      </form>
   );
 };
 

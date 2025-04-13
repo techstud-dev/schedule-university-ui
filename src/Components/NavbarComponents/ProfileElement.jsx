@@ -3,7 +3,7 @@ import p from "./NavbarComponents.module.css";
 import { useState } from "react";
 import profileIcon from "../../assets/icons/profile.png";
 import { useDispatch } from "react-redux";
-import { authSlice } from "../../app/auth.slice";
+import { authSlice } from "../../app/authSlice";
 
 const ProfileElement = () => {
   const dispatch = useDispatch();

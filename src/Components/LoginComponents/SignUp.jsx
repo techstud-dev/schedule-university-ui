@@ -6,8 +6,8 @@ import passShowIcon from "../../assets/icons/pass_show.svg";
 import { ButtonCustom } from "../UI/ButtonCustom";
 import l from "./styles/Login.module.css";
 import { useDispatch } from "react-redux";
-import { authSlice } from "../../app/auth.slice";
-import { useRegisterMutation } from "../../app/authApi";
+import { authSlice } from "../../app/authSlice";
+import { useRegisterUserMutation } from "../../app/authApi";
 
 const SignUp = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -24,7 +24,7 @@ const SignUp = () => {
   })
 
   const dispatch = useDispatch();
-  const [registerRequest, { data, error, isLoading }] = useRegisterMutation();
+  const [registerRequest, { data, error, isLoading }] = useRegisterUserMutation();
   
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
@@ -38,7 +38,6 @@ const SignUp = () => {
       const response = await registerRequest(data).unwrap();
       console.log('Server Response:', response);
       dispatch(authSlice.actions.setIsAuth(true));
-      localStorage.setItem("auth", JSON.stringify(data));
       navigate('/');
     } catch (err) {
       console.error('Ошибка при регистрации:', err);

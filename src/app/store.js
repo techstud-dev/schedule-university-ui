@@ -1,17 +1,14 @@
-// import { combineReducers, legacy_createStore } from "react-redux";
 import { configureStore } from '@reduxjs/toolkit'
-import { lessons, lessonSlice } from "./lesson.slice";
-import { authSlice } from './auth.slice';
-import { authApi } from './authApi';
+import { authSlice } from './authSlice';
+import {authApi} from "./authApi";
+
+const authReducer = authSlice.reducer;
 
 export const store = configureStore({
     reducer: {
-        lesson: lessonSlice.reducer,
-        auth: authSlice.reducer,
-        [authApi.reducerPath]: authApi.reducer
+        [authApi.reducerPath]: authApi.reducer,
+        auth: authReducer,
     },
-
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware)
-})
-
-store.dispatch(lessonSlice.actions.stored({ lessons }))
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(authApi.middleware),
+});

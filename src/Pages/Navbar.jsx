@@ -4,7 +4,7 @@ import Logo from "../Components/NavbarComponents/Logo.jsx";
 import n from "./styles/Navbar.module.css";
 import NavbarLinks from "../Components/NavbarComponents/NavbarLinks.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import { authSlice } from "../app/auth.slice.js";
+import { authSlice } from "../app/authSlice.js";
 
 function Navbar() {
   const dispatch = useDispatch();
