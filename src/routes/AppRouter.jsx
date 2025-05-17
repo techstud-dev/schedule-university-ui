@@ -2,15 +2,19 @@ import { Navigate, Route, Routes } from "react-router";
 import { privateRoutes, publicRoutes } from "./main";
 import { useSelector } from "react-redux";
 import { authSlice } from "../app/authSlice";
+import Loader from "../Components/UI/Loader";
 
 function AppRouter() {
 
   const isAuth = useSelector(state => authSlice.selectors.selectIsAuth(state));
   const isLoading = useSelector(state => authSlice.selectors.selectIsLoading(state));
+  //const isLoading = true;
 
     if (isLoading) {
       return (
-        <div>Загружаемся...</div>
+      <>
+        <Loader />
+      </>
       );
     }
 

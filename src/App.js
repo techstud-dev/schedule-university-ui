@@ -5,9 +5,11 @@ import Navbar from "./Pages/Navbar";
 import AppRouter from "./routes/AppRouter";
 import { authSlice } from "./app/authSlice";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
+  const isLocation = useLocation();
 
     useEffect(() => {
         if (localStorage.getItem("auth")) {
@@ -24,9 +26,11 @@ function App() {
         <main className="content">
           <AppRouter />
         </main>
-        <div className="footer">
-          <Footer />
-        </div>
+        {isLocation.path !== '/welcome' && (
+            <footer className="footer">
+                <Footer />
+            </footer>
+        )}
     </div>
   );
 }
